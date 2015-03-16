@@ -47,17 +47,25 @@
                 unset($user['pass']);
                 unset($user['2']);
                 
-                return Array(200,$user);
+                return Array("code"=>200,"message"=>$user);
             }else{
-                return Array(404,null);
+                return Array("code"=>404,"message"=>null);
             }
             
         }
         
         public function saveNew($email, $pass, $status, $visibility, $ipAdress, $enabled, $lang){
             
+            
+            
             if(trim($email) == "" || trim($pass)==""){
-                return array(400,"el email y el passworn no pueden estar vacios");
+                return array("code"=>400,"message"=>"el email y el passworn no pueden estar vacios");
+            }
+            
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+              
+                return array("code"=>400,"message"=>"el email no es valido");
+            
             }
             
             
@@ -86,11 +94,11 @@
                 
                 $sth->execute();
                 
-                return Array(201,$this->lastInsertId());
+                return Array("code"=>201,"message"=>intval($this->lastInsertId()));
                 
             }catch(PDOException $pdoe){
                 
-                return Array(400,"El correo electr—nico ya fue ingresado anteriormente");
+                return Array("code"=>400,"message"=>"El correo electrÃ³nico ya fue registrado anteriormente");
             }
            
         }
@@ -109,14 +117,14 @@
                 $sth->execute();
                 
                 if($sth->rowCount()>0){                
-                    return Array(200,$newToken);
+                    return Array("code"=>200,"message"=>$newToken);
                 }else{
-                    return Array(400,"el token no fue actualizado");
+                    return Array("code"=>400,"message"=>"el token no fue actualizado");
                 }
                 
             }catch(PDOException $pdoe){
                 
-                return Array(400,"Error en el server intente nuevamente");
+                return Array("code"=>400,"Error en el server intente nuevamente");
             }
             
         }
@@ -134,15 +142,15 @@
                 
                 if($sth->rowCount()>0){
                     
-                    return Array(200,"se actualiz— el password");
+                    return Array("code"=>200,"message"=>"se actualizÃ³ el password");
                 
                 }else{
-                    return Array(400,"el registro no fue actualizado");
+                    return Array("code"=>400,"message"=>"el registro no fue actualizado");
                 }
                 
             }catch(PDOException $pdoe){
                 
-                return Array(400,"Error en el server intente nuevamente");
+                return Array("code"=>400,"message"=>"Error en el server intente nuevamente");
             }
         }
         

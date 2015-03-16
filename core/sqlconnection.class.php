@@ -3,9 +3,11 @@ abstract class sqlconnection extends PDO
 {
     public $tableName;
     public $tablecolumns=array();
+    public $settings ="";
     
     public function __construct($tablename,$cols,$file = '../settings.ini')
     {
+        $this->settings = $file;
         
         $this->tableName=$tablename;
         $this->tablecolumns=$cols;
@@ -21,8 +23,10 @@ abstract class sqlconnection extends PDO
         parent::__construct($dns, $settings['dbconnection']['user'], $settings['dbconnection']['pass']);
         
         $this->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        
+        $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND,"SET NAMES utf8");
         $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $this->query( 'SET CHARACTER SET utf8' );
     }
     
     public function getAll(){

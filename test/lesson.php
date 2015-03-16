@@ -1,7 +1,7 @@
 <?php
     header("content-type:text/javascript");
     include_once("../core/core.php");
-    include_once("../model/theme.class.php");
+    include_once("../model/lesson.class.php");
 
     echo "probando theme \n";
     
@@ -13,7 +13,7 @@
     
     try{
         
-        $db = new ModelTheme();
+        $db = new ModelLesson();
         
         $method = isset($_REQUEST['m']) ?  $_REQUEST['m'] :1;
         
@@ -28,14 +28,15 @@
         
             case 2:
         
-                echo "probando getAllEnabledByLang() \n";
-                print_r($db->getAllEnabledByLang("ES"));
+                echo "probando getLessonsEnabledByLang() \n";
+                print_r($db->getLessonsEnabledByLang(1,"ES"));
                     
                 break;
+            
             case 3:
         
                 echo "probando get() \n";
-                print_r($db->get(1,"ES"));
+                print_r($db->get(2,"ES"));
                     
                 break;
         

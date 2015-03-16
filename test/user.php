@@ -22,19 +22,19 @@
 
         */
         
-        /*
+        
         echo "probando getFirst() \n";
         print_r($user->getFirst("ignaciojpg@gmail.com","kalil1983"));
-        */
+        
         
         /*
         echo "probando saveNew() \n";
         print_r($user->saveNew("usuario4@pruabas.com", "pruebas4", 1, 1, ip2long(get_client_ip()), 1, "ES"));
         */
         
-        echo "probando setNewPassword() \n";
-        print_r($user->setNewPassword("ignaciojpg@gmail.com", "kalil1983","b6a9e2bec4a62e78a76166a5538e5ab3"));
-        
+        //echo "probando setNewPassword() \n";
+        //print_r($user->setNewPassword("ignaciojpg@gmail.com", "kalil1983","b6a9e2bec4a62e78a76166a5538e5ab3"));
+        //
         
         
         

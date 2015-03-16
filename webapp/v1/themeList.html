@@ -1,0 +1,16 @@
+<div class="Themes panel panel-default " >
+                
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" ng-class="{ 'active' : themelist.isTabSelected(0) }"><a href="#" ng-click="themelist.selectTab(0)">Todos</a></li>
+        <li role="presentation" ng-class="{ 'active' : themelist.isTabSelected(1) }"><a href="#" ng-click="themelist.selectTab(1)">Mis cursos</a></li>
+        
+    </ul>
+    <br/>               
+    <ul class="themeList">
+       
+        <li ng-repeat="theme in themelist.themes" ng-click="selectTheme(theme)" ng-class="{'active': selectedTheme.id == theme.id}">
+            <h3>{{theme.title}}</h3>            
+        </li>
+    </ul>
+    
+</div>

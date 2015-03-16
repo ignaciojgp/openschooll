@@ -1,19 +1,15 @@
 <?php
     header("content-type:text/javascript");
     include_once("../core/core.php");
-    include_once("../model/theme.class.php");
+    include_once("../model/media.class.php");
 
     echo "probando theme \n";
     
     
-    
-    
-    
-   
-    
+     
     try{
         
-        $db = new ModelTheme();
+        $db = new ModelMedia();
         
         $method = isset($_REQUEST['m']) ?  $_REQUEST['m'] :1;
         
@@ -27,16 +23,10 @@
                 break;
         
             case 2:
-        
-                echo "probando getAllEnabledByLang() \n";
-                print_r($db->getAllEnabledByLang("ES"));
-                    
-                break;
-            case 3:
-        
-                echo "probando get() \n";
-                print_r($db->get(1,"ES"));
-                    
+                
+                echo "probando getMediaEnabledByLang() \n";
+                print_r($db->getMediaEnabledByLang(1,'ES'));
+                
                 break;
         
         }

@@ -1,0 +1,44 @@
+@import "vars";
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+
+.footer{
+    text-align: center;
+    clear: both;
+    padding: 1em;
+    margin: 1em auto;
+    background-color: $primarycolor;
+    @include border-radius(5px);
+}
+
+
+.loadingScreen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: $primarycolor;
+    z-index: 3;
+    opacity: 0.8;
+    @include border-radius(5px);
+    
+    img{
+      width: 100%*0.38;
+      display: block;
+      margin: auto;
+      top: 50%;
+      left: 50%;
+      margin-left: -(100%*0.38)/2;
+      margin-top: -(100%*0.38)/2;
+      position: absolute;
+      
+      
+    }
+}

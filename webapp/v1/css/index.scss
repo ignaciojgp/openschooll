@@ -1,0 +1,10 @@
+@import 'openschool';
+
+
+.register{
+    padding: 1em;
+    margin: 1em auto;
+    background: $primarycolor;
+    @include border-radius(5px);
+    position: relative;
+}

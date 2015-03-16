@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <h3>Detalle de {{selectedTheme.title}}</h3>
+        <p ng-bind-html="selectedTheme.description"></p>
+    </div>
+    <p>
+        <button class="btn" ng-click="themeDetail.loadInfo();">Lecciones</button>
+    </p>
+    
+    
+    <ul class="list-group">
+        <li ng-repeat="lesson in selectedTheme.lessons" class="list-group-item">
+            <span class="badge">{{lesson.value}}</span>
+            <h4>Lección: {{lesson.title}}</h4>
+            <p ng-bind-html="lesson.description"></p>
+            <p><button ng-click="loadLesson(lesson)">Ver lección</button></p>
+        </li>
+    </ul>
+    
+    
+    
+    
+</div>
