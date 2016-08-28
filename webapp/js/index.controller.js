@@ -22,7 +22,7 @@
         $scope.sendLogin = function() {
             if ($scope.valEmail() && $scope.valPass()) {
                 
-                $http.get('/openschooll/api/user/LOGIN/'+$scope.loginfields.email+"/"+$scope.loginfields.pass, options).
+                $http.get('/openschool/api/user/LOGIN/'+$scope.loginfields.email+"/"+$scope.loginfields.pass, options).
                 success(function(data, status, headers, config) {
                     
                    
@@ -98,7 +98,7 @@
                 
                 $scope.isRegistering = true;
                 
-                $http.get('/openschooll/api/user/REGISTER/'+$scope.fields.email+"/"+$scope.fields.pass, options).
+                $http.get('/openschool/api/user/REGISTER/'+$scope.fields.email+"/"+$scope.fields.pass, options).
                 success(function(data, status, headers, config) {
                     
                     $scope.isRegistering = false;

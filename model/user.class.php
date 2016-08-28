@@ -30,7 +30,7 @@
             
             
             
-            $query = 'SELECT * FROM '.self::TABLENAME.' WHERE '.self::COL_EMAIL.' = "'.pg_escape_string($email).'" AND '.self::COL_PASS.' = "'.md5($pass).'" LIMIT 1';
+            $query = 'SELECT * FROM '.self::TABLENAME.' WHERE '.self::COL_EMAIL.' = "'.PDO::quote($email).'" AND '.self::COL_PASS.' = "'.md5($pass).'" LIMIT 1';
             
            
             $sth = $this->prepare($query);
@@ -78,13 +78,13 @@
                 $query .= self::COL_ENABLED .', ';
                 $query .= self::COL_PREFERED_LANGUAJE;
                 $query .= ') VALUES (';
-                $query .= ' "'.pg_escape_string($email).'" ,';
+                $query .= ' "'.PDO::quote($email).'" ,';
                 $query .= ' "'.md5($pass).'" ,';
-                $query .= ' "'.pg_escape_string($status).'" ,';
-                $query .= ' "'.pg_escape_string($visibility).'" ,';
-                $query .= ' "'.pg_escape_string($ipAdress).'" ,';
-                $query .= ' "'.pg_escape_string($enabled).'" ,';
-                $query .= ' "'.pg_escape_string($lang).'")';
+                $query .= ' "'.PDO::quote($status).'" ,';
+                $query .= ' "'.PDO::quote($visibility).'" ,';
+                $query .= ' "'.PDO::quote($ipAdress).'" ,';
+                $query .= ' "'.PDO::quote($enabled).'" ,';
+                $query .= ' "'.PDO::quote($lang).'")';
             
            
             $sth = $this->prepare($query);
@@ -108,7 +108,7 @@
             
             $newToken = md5( $email.time());
             
-            $query = ' update '.self::TABLENAME.' set '.self::COL_TOKEN.' = "'.$newToken.'" WHERE email = "'.pg_escape_string($email).'" LIMIT 1';
+            $query = ' update '.self::TABLENAME.' set '.self::COL_TOKEN.' = "'.$newToken.'" WHERE email = "'.PDO::quote($email).'" LIMIT 1';
             
             $sth = $this->prepare($query);
             
@@ -131,7 +131,7 @@
         
         public function setNewPassword($email, $pass, $token){
             
-            $query = ' update '.self::TABLENAME.' set  '.self::COL_PASS.' = "'.md5($pass).'" , '.self::COL_TOKEN.' =  NULL WHERE '.self::COL_EMAIL.' = "'.pg_escape_string($email).'" and '.self::COL_TOKEN.' = "'.$token.'" ';
+            $query = ' update '.self::TABLENAME.' set  '.self::COL_PASS.' = "'.md5($pass).'" , '.self::COL_TOKEN.' =  NULL WHERE '.self::COL_EMAIL.' = "'.PDO::quote($email).'" and '.self::COL_TOKEN.' = "'.$token.'" ';
             
             
             $sth = $this->prepare($query);

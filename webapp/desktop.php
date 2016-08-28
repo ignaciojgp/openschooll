@@ -1,5 +1,5 @@
 <?php
-    include_once('../../core/core.php');
+    include_once('../core/core.php');
     
     if(!isset($_SESSION['myuser'])){
         header('location: index.php');

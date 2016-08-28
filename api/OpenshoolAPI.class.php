@@ -17,9 +17,9 @@ class OpenshoolAPI extends API
  
  
     protected function user($args){
-        require_once '../../model/user.class.php';
+        require_once '../model/user.class.php';
         
-        $usr = new ModelUser("../../settings.ini");
+        $usr = new ModelUser("../settings.ini");
         
         switch($this->verb){
             
@@ -62,9 +62,9 @@ class OpenshoolAPI extends API
     
     
     protected function themes($args){
-        require_once '../../model/theme.class.php';
+        require_once '../model/theme.class.php';
         
-        $model = new ModelTheme("../../settings.ini");
+        $model = new ModelTheme("../settings.ini");
         
         
         switch($this->method){
@@ -82,9 +82,9 @@ class OpenshoolAPI extends API
     }
     
     protected function theme($args){
-        require_once '../../model/theme.class.php';
+        require_once '../model/theme.class.php';
         
-        $model = new ModelTheme("../../settings.ini");
+        $model = new ModelTheme("../settings.ini");
         
         
         if($this->method == 'GET'){
@@ -99,8 +99,8 @@ class OpenshoolAPI extends API
     }
     
     protected function lesson($args){
-        require_once '../../model/lesson.class.php';
-        $model = new ModelLesson("../../settings.ini");
+        require_once '../model/lesson.class.php';
+        $model = new ModelLesson("../settings.ini");
         
         if($this->method == 'GET'){
             if(isset($args[0]))

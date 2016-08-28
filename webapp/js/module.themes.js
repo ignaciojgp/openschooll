@@ -21,7 +21,7 @@
                     themeList.tabSelected =idtab ;
                 }
                 
-                $http.get('/openschooll/api/themes/es/', $scope.keys).
+                $http.get('/openschool/api/themes/es/', $scope.keys).
                     success(function(data, status, headers, config) {
                         
                         if (data.code==200) {
@@ -61,7 +61,7 @@
                 themeDetail.loadInfo = function(){
                     
                     
-                    $http.get('/openschooll/api/theme/'+$scope.selectedTheme.id, $scope.keys).
+                    $http.get('/openschool/api/theme/'+$scope.selectedTheme.id, $scope.keys).
                         success(function(data, status, headers, config) {
                             
                             if (data.code==200) {
