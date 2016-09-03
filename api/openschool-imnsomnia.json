@@ -1,0 +1,100 @@
+{
+  "_type": "export",
+  "__export_format": 1,
+  "__export_date": "2016-09-03T14:20:29.259Z",
+  "__export_source": "insomnia.chrome.app:v2.7.0",
+  "items": [
+    {
+      "_type": "request_group",
+      "_id": "grp_1472871599114",
+      "name": "Api",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1472871599115",
+          "url": "http://localhost/openschool/api/user/LOGIN/",
+          "method": "POST",
+          "body": "{\n    \"params\":{\n        \"email\":\"ignaciojpg@gmail.com\",\n        \"pass\":\"kalil1983\"\n        \n    }\n}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "nacho",
+            "password": "1c8c5ef73ec6a7a9069604b9648f33cf"
+          },
+          "__insomnia": {
+            "format": "text",
+            "panel_width": 0.5
+          },
+          "name": "Login"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1472912359273",
+          "url": "http://localhost/openschool/api/user/MYUSER?apikey=1c8c5ef73ec6a7a9069604b9648f33cf&apiusr=nacho",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "nacho",
+            "password": "1c8c5ef73ec6a7a9069604b9648f33cf"
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "myuser"
+        }
+      ]
+    },
+    {
+      "_type": "request_group",
+      "_id": "grp_1472871673520",
+      "name": "Test modelos",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1472871673520",
+          "url": "http://localhost/openschool/test/user.php?m=2",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "usuario"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1472871803208",
+          "url": "http://localhost/openschool/test/menu.php",
+          "method": "GET",
+          "body": "{}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "Menus"
+        }
+      ]
+    }
+  ]
+}

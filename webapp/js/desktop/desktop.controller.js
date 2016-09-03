@@ -1,6 +1,12 @@
 (function(){
     
     var openSchoolApp = angular.module('openschoolApp',['themes','leason','menu']);
+     openSchoolApp.config(function($httpProvider) {
+        //Enable cross domain calls
+        $httpProvider.defaults.useXDomain = true;
+	$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
+	
+    });
     
     openSchoolApp.controller("PageController" , function($scope,$http){
         

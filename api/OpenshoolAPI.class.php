@@ -12,37 +12,24 @@ class OpenshoolAPI extends API
 	
 	
 	if (!isset($_SERVER['PHP_AUTH_USER'])) {
-	    echo 'Texto a enviar si el usuario pulsa el botón Cancelar';
+	    throw new Exception("no tiene acceso",401);
 	    exit;
 	} else {
-	    echo "<p>Hola {$_SERVER['PHP_AUTH_USER']}.</p>";
-	    echo "<p>Introdujo {$_SERVER['PHP_AUTH_PW']} como su contraseña.</p>";
+		$apiuser= $_SERVER['PHP_AUTH_USER'];
+		$apikey=$_SERVER['PHP_AUTH_PW'];
+	   
 	}
 	
         
         $request_body = file_get_contents('php://input');
         $this->postdata = json_decode($request_body);
         
-        $apiuser;
-        $apikey;
-        
-        if(isset($_REQUEST['apiusr']) && isset($_REQUEST['apikey'])){
-        	
-        	$apiuser = isset($_REQUEST['apiusr']);
-        	$apikey = isset($_REQUEST['apikey']);
-        	 
-        }else if(isset($this->postdata->params->apikey) && isset($this->postdata->params->apiusr)){
-        	
-        	$apiuser =  $this->postdata->params->apiusr;
-        	$apikey = $this->postdata->params->apikey;
-        }
-       
         
          
       
         
         if($apiuser != "nacho" || $apikey != "1c8c5ef73ec6a7a9069604b9648f33cf"){
-            throw new Exception("no tiene acceso",400);
+            throw new Exception("no tiene acceso",401);
         }
         
     }
