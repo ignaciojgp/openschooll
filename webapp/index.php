@@ -6,10 +6,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="css/index.css" rel="stylesheet" media="screen"/>
     
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/index.controller.js"></script>
+    <script type="text/javascript" src="js/libs/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap.js"></script>
+    <script type="text/javascript" src="js/libs/angular.min.js"></script>
+    <script type="text/javascript" src="js/home/index.controller.js"></script>
     
     <meta charset="UTF-8">
     <meta name="description" content="Free Web School">

@@ -7,7 +7,7 @@
 
     
     
-    $settings = parse_ini_file("../../settings.ini", true);
+    $settings = parse_ini_file("../settings.ini", true);
 
 
     if($settings['enviroment']['debugmode'] == true){

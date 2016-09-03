@@ -1,9 +1,26 @@
 (function(){
     
-    var openSchoolApp = angular.module('openschoolApp',['themes']);
+    var openSchoolApp = angular.module('openschoolApp',['themes','leason','menu']);
     
     openSchoolApp.controller("PageController" , function($scope,$http){
         
+	$scope.seccion = "";
+	$scope.$watch("menuSelectedOption",function(){
+		
+		if($scope.menuSelectedOption != undefined){
+			$scope.seccion = 'js/'+$scope.menuSelectedOption.name+'/default.view.html';	
+			
+		}else{
+			
+			//$scope.seccion = 'js/courses/default.view.html';	
+		}
+		
+		
+	},true);
+	
+	
+	
+	
         $scope.vista = 0;
         
         $scope.keys = {
@@ -15,7 +32,7 @@
         
         $scope.user = {};
         
-        $http.get('/openschooll/api/user/MYUSER', $scope.keys).
+        $http.get('/openschool/api/user/MYUSER', $scope.keys).
             success(function(data, status, headers, config) {
                 if (data.code==200) {
                    $scope.user= data.message;
@@ -37,7 +54,7 @@
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         $scope.loadLesson= function(lesson){
             
-            $http.get('/openschooll/api/lesson/'+lesson.id, $scope.keys).
+            $http.get('/openschool/api/lesson/'+lesson.id, $scope.keys).
                 success(function(data, status, headers, config) {
                     
                     if (data.code==200) {

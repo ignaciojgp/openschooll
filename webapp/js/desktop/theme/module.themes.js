@@ -1,11 +1,11 @@
 (function(){
     
-    var openSchoolApp= angular.module("themes",['ngSanitize']);
+    var openSchoolApp= angular.module("themes",['ngSanitize','leason']);
 
     openSchoolApp.directive("themeList" , function(){
         return {
             restrict:'E',
-            templateUrl:'themeList.html',
+            templateUrl:'js/desktop/theme/themeList.html',
             controller: function($scope,$http){
                 
                 var themeList = this;
@@ -29,8 +29,8 @@
                            themeList.themes = data.message;
                            
                         }else{
-                            alert("error "+data.code);
-                            
+                            //alert("error "+data.code);
+                            themeList.themes = [];
                         }
                         
                     });            
@@ -47,7 +47,7 @@
     openSchoolApp.directive("themeDetail" , function(){
         return {
             restrict:'E',
-            templateUrl:'themeDetail.html',            
+            templateUrl:'js/desktop/theme/themeDetail.html',            
             controllerAs: 'themeDetail',
             controller: function($scope,$http){
                 
@@ -81,19 +81,6 @@
         }
     });
     
-    openSchoolApp.directive("lessonDetail" , function(){
-        return {
-            restrict:'E',
-            templateUrl:'lessonDetail.html',            
-            controllerAs: 'lessonDetail',
-            controller: function($scope,$http){
-                
-                var lessonDetail = this;
-                
-            }
-            
-        }
-    });
     
     
 

@@ -12,22 +12,31 @@
     
     var openSchoolApp = angular.module('openschoolApp', []);
 
-    
+     openSchoolApp.config(function($httpProvider) {
+        //Enable cross domain calls
+        $httpProvider.defaults.useXDomain = true;
+	$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
+	
+    });
     
     openSchoolApp.controller('loginController', function ($scope, $http) {
-        
+	    
         $scope.loginfields = {};
         
         
         $scope.sendLogin = function() {
             if ($scope.valEmail() && $scope.valPass()) {
                 
-                $http.get('/openschool/api/user/LOGIN/'+$scope.loginfields.email+"/"+$scope.loginfields.pass, options).
+            	options.params.email = $scope.loginfields.email;
+            	options.params.pass =  $scope.loginfields.pass;
+            	
+                $http.post('/openschool/api/user/LOGIN/', options).
                 success(function(data, status, headers, config) {
                     
                    
                     if (data.code==200) {
                        //alert("exito "+data.code);
+		       debugger;
                        window.location.href="desktop.php";
                        
                     }else{
@@ -87,7 +96,7 @@
         this.sendRegister = function() {
             
             
-            options.params.capcha=$scope.fields.capcha;
+            options.params.captcha=$scope.fields.capcha;
                     
                 
             
@@ -97,8 +106,12 @@
             if (this.valEmail() && this.valPass() && this.valConf() &&  $scope.fields.accept) {
                 
                 $scope.isRegistering = true;
-                
-                $http.get('/openschool/api/user/REGISTER/'+$scope.fields.email+"/"+$scope.fields.pass, options).
+		
+		options.params.email = $scope.fields.email;
+            	options.params.pass =  $scope.fields.pass;
+		
+                debugger;
+                $http.post('/openschool/api/user/REGISTER/', options).
                 success(function(data, status, headers, config) {
                     
                     $scope.isRegistering = false;

@@ -6,34 +6,35 @@
     }else{
         
         $myuser = $_SESSION['myuser'];
-        
-        
-        
-        
     }
     
 ?>
 <!DOCTYPE html>
 <html ng-app="openschoolApp">
 <head>
+
+ 	<meta charset="UTF-8">
+    <meta name="description" content="Free Web School">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Ignacio J González Pérez">
+    
     <title>title</title>
     
         
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="css/desktop.css" rel="stylesheet" media="screen"/>
     
-    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/sanitize.js"></script>
-    <script type="text/javascript" src="js/module.themes.js"></script>
-    
-    <script type="text/javascript" src="js/desktop.controller.js"></script>
-    
-    <meta charset="UTF-8">
-    <meta name="description" content="Free Web School">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Ignacio J González Pérez">
+    <!--  librerias  -->
+    <script type="text/javascript" src="js/libs/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/libs/bootstrap.js"></script>
+    <script type="text/javascript" src="js/libs/angular.min.js"></script>
+    <script type="text/javascript" src="js/libs/sanitize.js"></script>
+
+	<!--  modulos  -->
+	<script type="text/javascript" src="js/menu/module.menu.js"></script>
+    <script type="text/javascript" src="js/desktop/theme/module.themes.js"></script>
+    <script type="text/javascript" src="js/desktop/leason/module.leason.js"></script>
+    <script type="text/javascript" src="js/desktop/desktop.controller.js"></script>
         
         
 </head>
@@ -45,7 +46,6 @@
                     OpenSchool
                 </a>
             </div>
-          
           
           
             <ul class="nav navbar-nav navbar-right">
@@ -65,31 +65,13 @@
       
         </div>
     </nav>
-    
-    <div class="desktop container">
-        <div class="col-sm-3">
-            <h2>Cursos</h2>
-            <theme-list></theme-list>
-        </div>
-        
-        <div class="col-sm-9">
-            <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" ng-class="{ 'active' : vista==0 }"><a href="#" ng-click=" vista=0">Curso</a></li>
-                <li role="presentation" ng-class="{ 'active' : vista==1 }"><a href="#" ng-click=" vista=1">Lección</a></li>
-                
-            </ul>
-            <theme-detail ng-show="vista==0 && selectedTheme!=null"></theme-detail>
-            
-            <div ng-show="vista==1">
-                
-                
-                
-                <lesson-detail ></lesson-detail>
-            </div>
-        </div>
-        
-         
-        
+    <main-menu options="user.menu" selection="menuSelectedOption"></main-menu>
+    <div class="container">
+    	<div ng-show="seccion == null" class="text-center">Seleccione una pantalla</div>
+	
+	<ng-include src="seccion"></ng-include>
+	
+	
     </div>
     
     
