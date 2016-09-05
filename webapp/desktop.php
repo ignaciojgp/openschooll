@@ -29,9 +29,14 @@
     <script type="text/javascript" src="js/libs/bootstrap.js"></script>
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
     <script type="text/javascript" src="js/libs/sanitize.js"></script>
+	
+	
+	<!--  servicios  -->
+    <script type="text/javascript" src="js/openschoolapi.service.js"></script>
 
 	<!--  modulos  -->
 	<script type="text/javascript" src="js/menu/module.menu.js"></script>
+    <script type="text/javascript" src="js/courses/course.controller.js"></script>
     <script type="text/javascript" src="js/desktop/theme/module.themes.js"></script>
     <script type="text/javascript" src="js/desktop/leason/module.leason.js"></script>
     <script type="text/javascript" src="js/desktop/desktop.controller.js"></script>
@@ -69,8 +74,7 @@
     <div class="container">
     	<div ng-show="seccion == null" class="text-center">Seleccione una pantalla</div>
 	
-	<ng-include src="seccion"></ng-include>
-	
+		<ng-include src="seccion"></ng-include>
 	
     </div>
     

@@ -1,57 +1,39 @@
 (function(){
     
-    var openSchoolApp = angular.module('openschoolApp',['themes','leason','menu']);
-     openSchoolApp.config(function($httpProvider) {
-        //Enable cross domain calls
-        $httpProvider.defaults.useXDomain = true;
-	$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
-	
-    });
+    var openSchoolApp = angular.module('openschoolApp',['menu','osapi','courseModule']);
     
-    openSchoolApp.controller("PageController" , function($scope,$http){
-        
-	$scope.seccion = "";
-	$scope.$watch("menuSelectedOption",function(){
-		
-		if($scope.menuSelectedOption != undefined){
-			$scope.seccion = 'js/'+$scope.menuSelectedOption.name+'/default.view.html';	
+	
+    
+    openSchoolApp.controller("PageController" , function($scope,$http,osapi){
 			
-		}else{
+		$scope.seccion = "";
+		$scope.$watch("menuSelectedOption",function(){
 			
-			//$scope.seccion = 'js/courses/default.view.html';	
-		}
-		
-		
-	},true);
-	
-	
-	
+			if($scope.menuSelectedOption != undefined){
+				$scope.seccion = 'js/'+$scope.menuSelectedOption.name+'/default.view.html';	
+				
+			}else{
+			}
+			
+		},true);
 	
         $scope.vista = 0;
         
-        $scope.keys = {
-            params:{
-                apiusr:"nacho",
-                apikey:"1c8c5ef73ec6a7a9069604b9648f33cf"
-            }
-        };
-        
         $scope.user = {};
         
-        $http.get('/openschool/api/user/MYUSER', $scope.keys).
-            success(function(data, status, headers, config) {
-                if (data.code==200) {
-                   $scope.user= data.message;
-                }
-            }); 
-       
+		osapi.userData().then(
+			function(data){
+				$scope.user = data;
+			},function(message){
+				alert(message);
+			});
+			
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
         $scope.selectTheme = function(theme){
             
             if ($scope.selectedTheme == null || $scope.selectedTheme.id != theme.id ) {
                 $scope.selectedTheme= theme;
             }
-            
             
             $scope.vista = 0;
         }
@@ -76,8 +58,5 @@
                 });  
           
         }
-        
-        
-        
     });
 })();

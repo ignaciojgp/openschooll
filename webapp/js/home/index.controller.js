@@ -1,25 +1,17 @@
 (function(){
     
-    var options = {
-        params:{
-            apiusr:"nacho",
-            apikey:"1c8c5ef73ec6a7a9069604b9648f33cf"
-            
-            
-        }
-        
-    };
     
-    var openSchoolApp = angular.module('openschoolApp', []);
+    
+    var openSchoolApp = angular.module('openschoolApp', ['osapi']);
 
      openSchoolApp.config(function($httpProvider) {
         //Enable cross domain calls
         $httpProvider.defaults.useXDomain = true;
-	$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
+		$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
 	
     });
     
-    openSchoolApp.controller('loginController', function ($scope, $http) {
+    openSchoolApp.controller('loginController', function ($scope, $http, osapi) {
 	    
         $scope.loginfields = {};
         
@@ -27,30 +19,17 @@
         $scope.sendLogin = function() {
             if ($scope.valEmail() && $scope.valPass()) {
                 
-            	options.params.email = $scope.loginfields.email;
-            	options.params.pass =  $scope.loginfields.pass;
-            	
-                $http.post('/openschool/api/user/LOGIN/', options).
-                success(function(data, status, headers, config) {
-                    
-                   
-                    if (data.code==200) {
-                       //alert("exito "+data.code);
-		       debugger;
-                       window.location.href="desktop.php";
-                       
-                    }else{
-                        alert("error "+data.code);
-                        
-                    }
-                    
-                }).
-                error(function(data, status, headers, config) {
-                    alert("error "+data);
-                    
-                    
-                });
-                
+                var promise  = osapi.login($scope.loginfields.email, $scope.loginfields.pass);
+				
+				promise.then(
+					function(){
+						window.location.href="desktop.php";
+					},
+					function(message){
+						console.log(message);
+						alert(message);
+					}
+				)
                 
             }else{
                 alert("todos los campos son obligatorios");
@@ -96,7 +75,7 @@
         this.sendRegister = function() {
             
             
-            options.params.captcha=$scope.fields.capcha;
+            
                     
                 
             
@@ -107,9 +86,13 @@
                 
                 $scope.isRegistering = true;
 		
-		options.params.email = $scope.fields.email;
-            	options.params.pass =  $scope.fields.pass;
+				var options = {params:{}};
 		
+				options.params.email = $scope.fields.email;
+            	options.params.pass =  $scope.fields.pass;
+				options.params.captcha=$scope.fields.capcha;
+				
+				
                 debugger;
                 $http.post('/openschool/api/user/REGISTER/', options).
                 success(function(data, status, headers, config) {

@@ -48,17 +48,18 @@ class OpenshoolAPI extends API
                 
             	$menus = new ModelMenu("../settings.ini");
             	
+
             	
                 
                 $myuser =  $usr->getFirst($this->postdata->params->email,$this->postdata->params->pass);
                 
                 if($myuser['code'] == 200){
 			
-		    $mymenues = $menus->getMenuForUser($myuser['message']['email'],'es');
+					$mymenues = $menus->getMenuForUser($myuser['message']['email'],'es');
 			
                     $_SESSION['myuser']= $myuser['message'];
 		    
-		    $_SESSION['myuser']['menu'] =  $mymenues["message"];
+					$_SESSION['myuser']['menu'] =  $mymenues["message"];
 		    
 		    
                 }

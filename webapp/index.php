@@ -9,6 +9,9 @@
     <script type="text/javascript" src="js/libs/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/libs/bootstrap.js"></script>
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
+	
+    <script type="text/javascript" src="js/openschoolapi.service.js"></script>
+	
     <script type="text/javascript" src="js/home/index.controller.js"></script>
     
     <meta charset="UTF-8">

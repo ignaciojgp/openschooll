@@ -1,1 +1,22 @@
-hola mundo
+<div class="desktop container" ng-controller="coursecontroller">
+	<h2>Cursos</h2>
+	<ul class="nav nav-tabs nav-justified">
+		<li role="presentation" ng-class="{ 'active' : view=='all' }"><a href="#" ng-click="view='all'">Catálogo</a></li>
+		<li role="presentation" ng-class="{ 'active' : view=='mycourses' }"><a href="#" ng-click="view='mycourses'">Mis cursos</a></li>
+	</ul>
+	
+	
+	
+
+	<div class="col-sm-3">
+		<!--theme-list></theme-list-->
+	</div>
+	
+	<div class="col-sm-9">
+		<!-- theme-detail ng-show="vista=='course' && selectedTheme!=null"></theme-detail -->
+		
+		<div ng-show="vista=='leason'">
+			<!-- lesson-detail ></lesson-detail -->
+		</div>
+	</div>
+</div>
