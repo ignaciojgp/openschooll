@@ -35,7 +35,7 @@
             case 3:
         
                 echo "probando get() \n";
-                print_r($db->get(1,"ES"));
+                print_r($db->get(1));
                     
                 break;
         

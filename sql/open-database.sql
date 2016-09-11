@@ -149,13 +149,13 @@ LOCK TABLES `instructorbadge` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `lesson`
+-- Table structure for table `leason`
 --
 
-DROP TABLE IF EXISTS `lesson`;
+DROP TABLE IF EXISTS `leason`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lesson` (
+CREATE TABLE `leason` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_theme` int(11) unsigned NOT NULL,
   `title` varchar(256) NOT NULL DEFAULT '',
@@ -164,17 +164,18 @@ CREATE TABLE `lesson` (
   `description` varchar(512) DEFAULT NULL,
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `value` tinyint(4) DEFAULT NULL,
+  `content` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `lesson`
+-- Dumping data for table `leason`
 --
 
-LOCK TABLES `lesson` WRITE;
-/*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
+LOCK TABLES `leason` WRITE;
+/*!40000 ALTER TABLE `leason` DISABLE KEYS */;
+/*!40000 ALTER TABLE `leason` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -493,13 +494,17 @@ DROP TABLE IF EXISTS `theme`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `theme` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL DEFAULT '',
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT NULL,
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `title` varchar(256) NOT NULL,
+  `description` text,
+  `content` text,
+  `lang` char(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -508,6 +513,7 @@ CREATE TABLE `theme` (
 
 LOCK TABLES `theme` WRITE;
 /*!40000 ALTER TABLE `theme` DISABLE KEYS */;
+INSERT INTO `theme` VALUES (1,'español','2016-09-05 01:54:57',NULL,1,'',NULL,NULL,'es'),(2,'matemáticas','2016-09-05 01:54:57',NULL,1,'',NULL,NULL,'es'),(3,'física','2016-09-05 01:54:57',NULL,1,'',NULL,NULL,'es'),(4,'química','2016-09-05 01:54:57',NULL,1,'',NULL,NULL,'es');
 /*!40000 ALTER TABLE `theme` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -721,4 +727,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-03  8:53:27
+-- Dump completed on 2016-09-04 21:20:18

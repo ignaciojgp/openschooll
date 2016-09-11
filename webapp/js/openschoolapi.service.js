@@ -1,6 +1,5 @@
 (function(){
 	
-	var S_LOGIN = '/openschool/api/user/LOGIN/';
 	
 	var mod = angular.module("osapi",[]);
 	mod.config(function($httpProvider) {
@@ -16,6 +15,7 @@
 			login  -------
 		*/
 		this.login = function(email,pass){
+			
 			var deferred = $q.defer();
 
 			var options = {params:{}};
@@ -24,19 +24,19 @@
 			options.params.pass =  pass;
 			
                 
-			$http.post(S_LOGIN, options).
-                success(function(data, status, headers, config) {
-                    if (data.code==200) {
-                       deferred.resolve();
-                    }else if(data.code == 404){
-						deferred.reject("credenciales erróneas");
-                    }
-                }).
-                error(function(data, status, headers, config) {
+			$http.post('/openschool/api/user/LOGIN/', options).
+				success(function(data, status, headers, config) {
+				    if (data.code==200) {
+				       deferred.resolve();
+				    }else if(data.code == 404){
+								deferred.reject("credenciales erróneas");
+				    }
+				}).
+				error(function(data, status, headers, config) {
                     
-                    deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
                     
-                }
+				}
 			);
 			
 			
@@ -49,7 +49,7 @@
 		this.userData = function(){
 			var deferred = $q.defer();
 
-	        $http.get('/openschool/api/user/MYUSER', null).
+			$http.get('/openschool/api/user/MYUSER', null).
 				success(function(data, status, headers, config) {
 					if (data.code==200) {
 					   // $scope.user= ;
@@ -67,7 +67,29 @@
 			return deferred.promise;
 		}
 		
-
+		/*
+			themas
+		*/
+		this.getAllThemes = function(){
+			var deferred = $q.defer();
+			$http.get('/openschool/api/themes/es', null).
+				success(function(data, status, headers, config) {
+					if (data.code==200) {
+					   // $scope.user= ;
+					   deferred.resolve(data.message);
+	 
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+			
+		}
 		
 		
 		

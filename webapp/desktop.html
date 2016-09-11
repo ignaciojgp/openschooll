@@ -1,14 +1,3 @@
-<?php
-    include_once('../core/core.php');
-    
-    if(!isset($_SESSION['myuser'])){
-        header('location: index.php');
-    }else{
-        
-        $myuser = $_SESSION['myuser'];
-    }
-    
-?>
 <!DOCTYPE html>
 <html ng-app="openschoolApp">
 <head>
@@ -74,7 +63,7 @@
     <div class="container">
     	<div ng-show="seccion == null" class="text-center">Seleccione una pantalla</div>
 	
-		<ng-include src="seccion"></ng-include>
+	<ng-include src="seccion"></ng-include>
 	
     </div>
     

@@ -21,15 +21,15 @@
                 
                 var promise  = osapi.login($scope.loginfields.email, $scope.loginfields.pass);
 				
-				promise.then(
-					function(){
-						window.location.href="desktop.php";
-					},
-					function(message){
-						console.log(message);
-						alert(message);
-					}
-				)
+		promise.then(
+			function(){
+				window.location.href="desktop.html";
+			},
+			function(message){
+				console.log(message);
+				alert(message);
+			}
+		)
                 
             }else{
                 alert("todos los campos son obligatorios");
@@ -86,11 +86,11 @@
                 
                 $scope.isRegistering = true;
 		
-				var options = {params:{}};
+		var options = {params:{}};
 		
-				options.params.email = $scope.fields.email;
+		options.params.email = $scope.fields.email;
             	options.params.pass =  $scope.fields.pass;
-				options.params.captcha=$scope.fields.capcha;
+		options.params.captcha=$scope.fields.capcha;
 				
 				
                 debugger;
