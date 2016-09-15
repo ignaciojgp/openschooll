@@ -1,11 +1,10 @@
 (function(){
 	
-	var mod = angular.module('courseModule',['osapi'])
+	var mod = angular.module('courseModule',['osapi','themeModule'])
 
-	var cont = mod.controller("coursecontroller" , function($scope,osapi){
+	var cont = mod.controller("coursecontroller" , function($scope,osapi, $location){
 		
 		$scope.themes = [];
-		$scope.selectedTheme = null;
 
 		$scope.$watch("view",function(){
 			
@@ -18,6 +17,11 @@
 			
 		},true);
 		
+		$scope.regresar =function(){
+			$scope.selectedTheme = null;
+			$location.path("/courses");
+			
+		}
 		
 		osapi.getAllThemes().then(
 			function(message){
@@ -25,46 +29,37 @@
 				if($scope.view == "all"){
 					$scope.themes = $scope.allthemes;
 				}
+				
+				$scope.$on('$locationChangeSuccess', cambioUbicacion);
+				cambioUbicacion(null);
 			},
 			function(message){
 				alert(message);
 			});
+			
+			
+		/*
+		reconoce cuando cambia la ubicacion 
+		*/
+		function cambioUbicacion(event){
+			
+			var path = $location.url();
 		
-		
+			var secciones = path.split("/");
+			var nombreTema = secciones[2];
+			if(nombreTema && $scope.allthemes){
+				var nom = decodeURIComponent(nombreTema);
+				var themaCoincidente = $scope.allthemes.filter(function(item){return item.name == nom})[0]
+				
+				if(themaCoincidente){
+					$scope.selectedTheme  = themaCoincidente;
+				}
+			}
+		}
 		
 	})
 	
-	cont.directive("themeList",function(){
-		return {
-			scope:{
-				list:"=list",
-				
-			},
-			controller:function($scope){
-				
-				$scope.selectTheme = function(theme){
-					$scope.$parent.selectedTheme = theme;
-					
-				}
-				
-			},
-			templateUrl:"js/courses/themelist.view.html",
-			
-			
-		};
-	});
 	
-	cont.directive("themeDetail",function(){
-		return {
-			scope:{
-				theme:"=theme"
-			},
-			
-			templateUrl:"js/courses/themedetail.view.html",
-			
-			
-		};
-	});
-
+	
 
 })();

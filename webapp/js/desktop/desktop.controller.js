@@ -4,59 +4,49 @@
     
 	
     
-    openSchoolApp.controller("PageController" , function($scope,$http,osapi){
+    openSchoolApp.controller("PageController" , function($scope,$http,osapi,$location){
+	$scope.vista = 0;
+        $scope.user = {};
+	$scope.seccion = "";
+
+	
+	$scope.$on('$locationChangeSuccess', function(event) {
+		reconoceSeccion();
+	});
+
+	
+        
+	osapi.userData().then(
+		function(data){
+			$scope.user = data;
+			reconoceSeccion();
+		},
+		function(message){
+			alert(message);
+		});
+
+	function reconoceSeccion(){
+		
+		var path = $location.url();
+		
+		var seccion = path.split("/");
+		
+		if($scope.user.menu != undefined && seccion.length > 1){
+
 			
-		$scope.seccion = "";
-		$scope.$watch("menuSelectedOption",function(){
+			var seccionUsuario = $scope.user.menu.filter(function(item){ return item.name == seccion[1]})[0]
 			
-			if($scope.menuSelectedOption != undefined){
-				$scope.seccion = 'js/'+$scope.menuSelectedOption.name+'/default.view.html';	
+			if(seccionUsuario){
 				
-			}else{
+				$scope.seccion = 'js/'+seccionUsuario.name+'/default.view.html';
 			}
 			
-		},true);
+				
+		}
+		
+		
+	}
 	
-        $scope.vista = 0;
-        
-        $scope.user = {};
-        
-		osapi.userData().then(
-			function(data){
-				$scope.user = data;
-			},function(message){
-				alert(message);
-			});
-			
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-        $scope.selectTheme = function(theme){
-            
-            if ($scope.selectedTheme == null || $scope.selectedTheme.id != theme.id ) {
-                $scope.selectedTheme= theme;
-            }
-            
-            $scope.vista = 0;
-        }
-        
-        
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        $scope.loadLesson= function(lesson){
-            
-            $http.get('/openschool/api/lesson/'+lesson.id, $scope.keys).
-                success(function(data, status, headers, config) {
-                    
-                    if (data.code==200) {
-                       $scope.selectedLesson  = data.message;
-                       
-                       $scope.selectedLesson.theme = $scope.selectedTheme;
-                       
-                       $scope.vista = 1;
-                       
-                    }else{
-                        alert("error "+data.code);
-                    }
-                });  
-          
-        }
+       
     });
 })();

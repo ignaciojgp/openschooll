@@ -1,1 +1,23 @@
-<h2>{{theme.name}}</h2>
+<div >
+	<h2>{{theme.name}}</h2>
+
+
+	<div  ng-show="!detail">cargando...</div>
+
+	<div ng-show="detail">
+		<div>{{detail.description}}</div>
+		<ol>
+			<li ng-repeat="lesson in detail.lessons">
+				<h3>{{lesson.title}}</h3>
+				<div>{{lesson.description}}</div>
+			</li>
+		</ol>
+		
+		
+		
+		
+		
+		
+	</div>
+	
+</div>

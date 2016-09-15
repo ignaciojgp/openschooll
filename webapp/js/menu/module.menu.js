@@ -2,7 +2,7 @@
 	
 	var module = angular.module("menu",[]);
 	
-	module.directive("mainMenu",function(){
+	module.directive("mainMenu",function($location){
 		
 		return {
 			restrict:'E',
@@ -17,11 +17,11 @@
 	                
 			
 			$scope.setSelection = function(item){
-				$scope.selected = item;
+				$location.url(item.name);
 			}
 			
 			
-	               //$scope.menuOptions = ["hola","mundo"];
+	              
 	                
             }
 		}

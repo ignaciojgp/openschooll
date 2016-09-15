@@ -91,7 +91,28 @@
 			
 		}
 		
-		
+		/*
+			detalleDeTheme
+		*/
+		this.getTheme = function(idTheme){
+			var deferred = $q.defer();
+			$http.get('/openschool/api/theme/es/'+idTheme, null).
+				success(function(data, status, headers, config) {
+					if (data.code==200) {
+					   // $scope.user= ;
+					   deferred.resolve(data.message);
+	 
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+		}
 		
 	}) 
 })();

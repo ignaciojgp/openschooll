@@ -12,7 +12,7 @@
     });
     
     openSchoolApp.controller('loginController', function ($scope, $http, osapi) {
-	    
+	    debugger;
         $scope.loginfields = {};
         
         
@@ -63,7 +63,7 @@
     
     //Registro
     openSchoolApp.controller('registerController', function ($scope, $http) {
-        
+        debugger;
         $scope.fields = {};
         $scope.isRegistering = false;
         $scope.registroExitoso = false;
@@ -156,5 +156,26 @@
         }
         
     });
+    
+    openSchoolApp.controller('otroController', function ($scope, $http, $controller) {
+        $scope.texto="hola mundo";
+	
+	var anidado = $controller("anidadoController",{$scope: $scope})
+	
+	
+	
+        
+        
+    });
+    
+     openSchoolApp.controller('anidadoController', function ($scope, $http) {
+        $scope.texto="soy anidado";
+	
+	this.crear = function(){
+		alert("hola mundo");
+	}
+        
+    });
+    
     
 })();

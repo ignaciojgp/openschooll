@@ -12,8 +12,9 @@
 		<br/>
 		<theme-list list="themes" ></theme-list>
 	</div>
+	
 	<div ng-show="selectedTheme != null">
-		<button ng-click="selectedTheme = null" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</button>
+		<button ng-click="regresar()" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</button>
 		<theme-detail theme="selectedTheme"></theme-detail>
 	</div>
 	
