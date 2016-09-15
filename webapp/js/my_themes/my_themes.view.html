@@ -1,0 +1,9 @@
+<div ng-controller="myThemesController" ng-init="view = 'list'">
+	Mis temas
+	
+	<div>
+		<button class="btn" ng-click="view = 'form'"><span class="glyphicon glyphicon-plus"></span> Crear tema</button>
+	</div>
+	<list ng-if="view == 'list'" themes="themeList"></list>
+	<form-theme ng-if="view == 'form'" ></form-theme>
+</div>

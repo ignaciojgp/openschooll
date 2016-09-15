@@ -1,6 +1,6 @@
 (function(){
     
-    var openSchoolApp = angular.module('openschoolApp',['menu','osapi','courseModule']);
+    var openSchoolApp = angular.module('openschoolApp',['menu','osapi','courseModule','mythemesModule']);
     
 	
     
@@ -38,7 +38,7 @@
 			
 			if(seccionUsuario){
 				
-				$scope.seccion = 'js/'+seccionUsuario.name+'/default.view.html';
+				$scope.seccion = 'js/'+seccionUsuario.name+'/'+seccionUsuario.name+'.view.html';
 			}
 			
 				
