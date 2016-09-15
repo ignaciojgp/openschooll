@@ -1,24 +1,54 @@
-<form name="crear" >
-	<p class="row form-group " ng-class="{'has-error':!crear.inputTitle.$valid && crear.inputTitle.$dirty, 'has-success': crear.inputTitle.$valid && crear.inputTitle.$dirty }">
-		<label class="control-label col-md-4 text-right">Título</label>
-		<span class="col-md-8 "><input type="text" name="inputTitle" required ng-model="name" class="form-control"/></span>
+<form name="crear"  ng-disabled="sending">
+	<p class="row" >
+		<div class="col-md-4 text-right">
+			<label class="control-label ">ID</label>
+		</div>
+		<div class="col-md-8 ">
+			<input type="text" name="idInput" readonly ng-model="theme.id" class="form-control"/>
+		</div>
+		
 	</p>
-	<p class="row form-group " ng-class="{'has-error':!crear.selectlang.$valid}">
-		<label class="control-label col-md-4 text-right">Lenguaje</label>
-		<span class="col-md-8 "><select name="selectlang" required ng-model="lang" ng-options="lang.val as lang.label for lang in languajes" class="form-control"></select></span>
+	<p class="row" >
+		<div class="col-md-4 text-right">
+			<label class="control-label ">Título</label>
+		</div>
+		<div class="col-md-8 ">
+			<input type="text" name="inputTitle" required ng-model="theme.name" class="form-control"/>
+			<div ng-show="crear.inputTitle.$dirty && crear.inputTitle.$error.required" class="alert alert-danger">Campo requerido</div>
+		</div>
+		
 	</p>
-	<p class="row form-group ">
-		<label class="control-label col-md-4 text-right">Descripción</label>
-		<span class="col-md-8 "><textarea required ng-model="description" class="form-control"></textarea></span>
+	
+	<p class="row">
+		<div class="col-md-4 text-right">
+			<label class="control-label ">Lenguaje</label>
+		</div>
+		<div class="col-md-8 ">
+			<select name="selectlang" required ng-model="theme.lang" ng-options="lang.val as lang.label for lang in languajes" class="form-control"></select>
+		</div>
 	</p>
-	<p class="row form-group ">
-		<label class="control-label col-md-4 text-right">Contenido</label>
-		<span class="col-md-8 "><textarea ng-model="content" class="form-control"></textarea></span>
+	<p class="row">
+		<div class="col-md-4 text-right">
+			<label class="control-label">Descripción</label>
+		</div>
+		<div class="col-md-8 ">
+			<textarea required ng-model="theme.description" name="descr" class="form-control"></textarea>
+			<div ng-show="crear.descr.$dirty && crear.descr.$error.required" class="alert alert-danger">Campo requerido</div>
+		</div>
 	</p>
-	<p class="row form-group ">
-		<span class="col-md-8 col-md-offset-4">
-			<button class="btn btn-active" ng-disabled="!crear.$valid">Guardar</button>
-		</span>
+	<p class="row ">
+		<div class="col-md-4 text-right">
+			<label class="control-label">Contenido</label>
+		</div>
+		
+		<div class="col-md-8 ">
+			<textarea ng-model="theme.content" class="form-control"></textarea>
+		</div>
+	</p>
+	<p class="row ">
+		<div class="col-md-8 col-md-offset-4 text-right">
+			<button class="btn btn-primary" ng-disabled="!crear.$valid" ng-click="submit()">Guardar</button>
+		</div>
 	</p>
 	
 </form>

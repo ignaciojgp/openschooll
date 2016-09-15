@@ -19,7 +19,7 @@
         &:hover, &.active{
             background: #efefef;
         }
-        
+         
         h3{
             margin-top: 0;
         }
@@ -27,7 +27,12 @@
     
     
 }
-
+.ng-valid.ng-dirty{
+	border-color:green;
+}
+.ng-invalid.ng-dirty{
+	border-color:red;
+}
 .mediaNote{
     font-size: 0.818em;
     color: $secondaryColor;

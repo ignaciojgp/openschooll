@@ -74,6 +74,8 @@
 			var deferred = $q.defer();
 			$http.get('/openschool/api/themes/es', null).
 				success(function(data, status, headers, config) {
+					
+					debugger
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
@@ -113,6 +115,71 @@
 			
 			return deferred.promise;
 		}
+		
+		/*
+			save theme
+		*/
+		this.saveTheme = function(id,name,description, content, lang){
+			var deferred = $q.defer();
+			
+			var data = {
+				id:id,
+				name:name,
+				description:description, 
+				content:content, 
+				lang:lang
+			}
+			
+			$http({
+			    method: 'POST',
+			    url: '/openschool/api/theme/',
+			    data: $.param(data),
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).
+				success(function(data, status, headers, config) {
+					
+					if (data.code==200) {
+						deferred.resolve(data.message);
+	 
+					}else{
+						deferred.reject(data.message);
+						
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+			
+		}
+		
+		this.getThemesByCreator = function(idUser){
+			
+			var deferred = $q.defer();
+			$http.get('/openschool/api/themesBy/creator/'+idUser, null).
+				success(function(data, status, headers, config) {
+					if (data.code==200) {
+						deferred.resolve(data.message);
+					}else{
+						deferred.reject([]);
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+		}
+		
+			
+		
 		
 	}) 
 })();

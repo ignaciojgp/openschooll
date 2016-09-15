@@ -38,6 +38,13 @@
                 print_r($db->get(1));
                     
                 break;
+		
+	   case 4:
+        
+                echo "probando save() \n";
+                print_r($db->save(null,"algo2", "descripcion","contenido","es"));
+                    
+                break;
         
         }
         

@@ -1,6 +1,17 @@
-<h3>Mis temas</h3>
-<ul>
-	<li ng-if="themes.length == 0">No hay datos disponibles</li>
-	<li ng-repeat="theme in themes">{{theme}}</li>
+<table class="table table-striped">
+	<tr ng-if="themes.length == 0">
+		<td>No hay datos disponibles</td>
+	</tr>
+	
+	<tr ng-repeat="theme in themes">
+		<th>
+			{{theme.name}}
+		</th>
+		<td>{{theme.description}}</td>
+		<td><small>{{theme.createdAt}}</small></td>
+		<td class="text-right">
+			<button class="btn" ng-click="selectTheme(theme)"> <span class="glyphicon glyphicon-pencil "></span> Editar</button>
+		</td>
+	</tr>
 	
 </ul>

@@ -31,6 +31,7 @@
                     .self::TABLENAME.'.'.self::COL_NAME.', '
                     .self::TABLENAME.'.'.self::COL_ENABLED.', '
                     .self::TABLENAME.'.'.self::COL_DESCRIPTION.','
+                    .self::TABLENAME.'.'.self::COL_LANG.','
                     .self::TABLENAME.'.'.self::COL_CONTENT
                     
                     .' FROM '.self::TABLENAME                    
@@ -97,7 +98,56 @@
             
         }
         
+        public function save($id,$name, $description, $content, $lang){
+		
+		$queryInsert = "INSERT INTO ".self::TABLENAME." ("
+				.self::COL_NAME.", "
+				.self::COL_DESCRIPTION.", "
+				.self::COL_CONTENT.", "
+				.self::COL_LANG.", "
+				.self::COL_UPDATED_AT
+				." )
+				values (?,?,?,?, CURRENT_TIMESTAMP)";
+		
+		$queryUpdate = "UPDATE ".self::TABLENAME." SET  "
+						.self::COL_NAME." = ? ,  "
+						.self::COL_DESCRIPTION." = ?  , "
+						.self::COL_CONTENT." = ?  , "
+						.self::COL_UPDATED_AT." = CURRENT_TIMESTAMP  "
+						." WHERE id = ? "; 
+		
+		$paramsInser = [$name, $description, $content, $lang];
+		$paramsUpdate = [$name, $description, $content, $id];
+		
+		
+		
+		 $sth = $this->prepare($id == null ? $queryInsert : $queryUpdate );
         
+		 $sth->execute($id == null ? $paramsInser : $paramsUpdate);
+		    
+		    
+		 $rows = $sth->fetchAll();
+		    
+		  $retid = $this->lastInsertId();
+		  
+	
+		    
+		if($retid != 0 && $id == null){
+		
+			return Array("code"=>200,"insertedId"=>$retid);
+			
+		}else if($id != null){
+		      
+			return Array("code"=>200,"message"=>"updated");
+		      
+		}else{
+		      
+			return Array("code"=>404,"message"=>null);
+		} 
+		    
+		
+		
+	}
         
         
     }

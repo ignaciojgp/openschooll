@@ -105,7 +105,26 @@ class OpenshoolAPI extends API
             
             case "GET":
                 
-                return $model->getAllEnabledByLang($this->verb);
+		return $model->getAllEnabledByLang($this->verb);
+                
+                break;
+            
+            
+            
+        }
+        
+    }
+    
+    protected function themesBy($args){
+        require_once '../model/themeauthor.class.php';
+        $model = new ModelThemeAuthor("../settings.ini");
+        
+        
+        switch($this->verb){
+            
+            case "creator":
+                
+		return $model->getByUser($args[0]);
                 
                 break;
             
@@ -125,7 +144,39 @@ class OpenshoolAPI extends API
             if(isset($args[0]))
                 return $model->get($args[0]);
         }
-           
+             
+	if($this->method == 'POST'){
+		if(
+			isset($_REQUEST['id']) &&
+			isset($_REQUEST['name']) &&
+			isset($_REQUEST['description']) &&
+			isset($_REQUEST['content']) &&
+			isset($_REQUEST['lang']) 
+		){
+			
+			$result = $model->save(
+				$_REQUEST['id'] != ''  ?  $_REQUEST['id']  : null,
+				$_REQUEST['name'] ,
+				$_REQUEST['description'] ,
+				$_REQUEST['content'],
+				$_REQUEST['lang'] 
+				
+			);
+			
+			if(isset($result['insertedId'])){
+				
+				require_once '../model/themeauthor.class.php';
+				
+				$model2 = new ModelThemeAuthor("../settings.ini");
+				
+				$model2->setCreatorToTheme($_SESSION['myuser']['id'],$result['insertedId']);
+				
+			}
+			
+			return Array('code'=>200,'message'=>$result);
+		}
+                //return $model->get($args[0]);
+        }
            
         return Array('code'=>400,'message'=>'solicitud mal formada');
         

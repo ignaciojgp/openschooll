@@ -1,9 +1,10 @@
 <div ng-controller="myThemesController" ng-init="view = 'list'">
-	Mis temas
+	<h2>Mis temas</h2>
 	
 	<div>
-		<button class="btn" ng-click="view = 'form'"><span class="glyphicon glyphicon-plus"></span> Crear tema</button>
+		<button class="btn btn-primary" ng-click="nuevo()" ng-show="view == 'list'"><span class="glyphicon glyphicon-plus"></span> Crear tema</button>
+		<button class="btn" ng-click="edithTheme=null" ng-show="view == 'form'"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</button>
 	</div>
-	<list ng-if="view == 'list'" themes="themeList"></list>
-	<form-theme ng-if="view == 'form'" ></form-theme>
+	<mythemes-list ng-if="view == 'list'" themes="themeList"></mythemes-list>
+	<form-theme ng-if="view == 'form'" ediththeme = "edithTheme" ></form-theme>
 </div>
