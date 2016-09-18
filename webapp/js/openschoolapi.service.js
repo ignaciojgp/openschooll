@@ -178,6 +178,28 @@
 			return deferred.promise;
 		}
 		
+		/*
+			detalleDeTheme
+		*/
+		this.getLesson = function(idLesson){
+			var deferred = $q.defer();
+			$http.get('/openschool/api/lesson/'+idLesson, null).
+				success(function(data, status, headers, config) {
+					if (data.code==200) {
+					   // $scope.user= ;
+					   deferred.resolve(data.message);
+	 
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+		}
 			
 		
 		

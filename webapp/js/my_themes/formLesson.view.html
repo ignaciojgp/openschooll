@@ -1,0 +1,52 @@
+<form name="crear"  ng-disabled="sending">
+	<p class="row" >
+		<div class="col-md-2 text-right">
+			<label class="control-label ">ID</label>
+		</div>
+		<div class="col-md-4 ">
+			<input type="text" name="idInput" readonly ng-model="lesson.id" class="form-control"/>
+		</div>
+		<div class="col-md-2 text-right">
+			<label class="control-label ">ID TEMA</label>
+		</div>
+		<div class="col-md-4 ">
+			<input type="text" name="idInput" readonly ng-model="lesson.id_theme" class="form-control"/>
+		</div>
+	</p>
+	
+	<p class="row" >
+		<div class="col-md-2 text-right">
+			<label class="control-label ">Título</label>
+		</div>
+		<div class="col-md-10 ">
+			<input type="text" name="inputTitle" required ng-model="lesson.title" class="form-control"/>
+			<div ng-show="crear.inputTitle.$dirty && crear.inputTitle.$error.required" class="alert alert-danger">Campo requerido</div>
+		</div>
+		
+	</p>
+	
+	<p class="row">
+		<div class="col-md-2 text-right">
+			<label class="control-label">Descripción</label>
+		</div>
+		<div class="col-md-10 ">
+			<textarea required ng-model="lesson.description" name="descr" class="form-control"></textarea>
+			<div ng-show="crear.descr.$dirty && crear.descr.$error.required" class="alert alert-danger">Campo requerido</div>
+		</div>
+	</p>
+	<p class="row ">
+		<div class="col-md-2 text-right">
+			<label class="control-label">Contenido</label>
+		</div>
+		
+		<div class="col-md-10 ">
+			<textarea ng-model="lesson.content" class="form-control	" ></textarea>
+		</div>
+	</p>
+	<p class="row ">
+		<div class="col-md-10 col-md-offset-2 text-right">
+			<button class="btn btn-primary" ng-disabled="!crear.$valid" ng-click="submit()">Guardar</button>
+		</div>
+	</p>
+	
+</form>

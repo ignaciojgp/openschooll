@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.24, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.11, for Win32 (x86)
 --
 -- Host: localhost    Database: openschool
 -- ------------------------------------------------------
--- Server version	5.6.24
+-- Server version	5.6.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -167,7 +167,7 @@ CREATE TABLE `lesson` (
   `content` text,
   `ord` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +176,7 @@ CREATE TABLE `lesson` (
 
 LOCK TABLES `lesson` WRITE;
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
-INSERT INTO `lesson` VALUES (1,4,'acentos','2016-09-05 02:42:09',NULL,'cómo poner un acento',1,3,'algo de contenido',1),(2,4,'el punto','2016-09-05 02:46:01',NULL,'usos del punto',1,3,'algo de contenidos',2);
+INSERT INTO `lesson` VALUES (1,29,'acentos','2016-09-05 02:42:09',NULL,'cómo poner un acento',1,3,'algo de contenido',1),(2,29,'el punto','2016-09-05 02:46:01',NULL,'usos del punto',1,3,'algo de contenidos',2),(3,30,'leccion 1','2016-09-17 16:22:58',NULL,'descripcion leccion 1',0,3,NULL,NULL),(4,30,'leccion 2','2016-09-17 16:24:05',NULL,'descripcion leccion 2',1,3,NULL,NULL),(5,30,'algo','2016-09-17 21:46:56',NULL,NULL,1,3,'contenido',NULL);
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +505,7 @@ CREATE TABLE `theme` (
   `content` text,
   `lang` char(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,7 +514,7 @@ CREATE TABLE `theme` (
 
 LOCK TABLES `theme` WRITE;
 /*!40000 ALTER TABLE `theme` DISABLE KEYS */;
-INSERT INTO `theme` VALUES (4,'química','2016-09-05 01:54:57',NULL,1,NULL,NULL,'es'),(13,'Español','2016-09-15 17:10:02','2016-09-15 17:10:12',1,'Lecciones de español','contenido','es'),(14,'Otro título','2016-09-15 17:45:46','2016-09-15 22:14:55',1,'Con otra descripción','asdasd','es'),(15,'Título','2016-09-15 17:47:07','2016-09-15 17:47:07',1,'asdasd','asdasd','es'),(16,'Título','2016-09-15 17:47:27','2016-09-15 17:47:27',1,'asdasd','asdasd','es'),(17,'Título','2016-09-15 17:47:55','2016-09-15 17:47:55',1,'asdasd','asdasd','es'),(18,'Título','2016-09-15 17:49:16','2016-09-15 17:49:16',1,'asdas','asdasd','es'),(19,'Título','2016-09-15 17:58:48','2016-09-15 17:58:48',1,'asdas','asdasd','es'),(20,'Otro titulo','2016-09-15 17:59:26','2016-09-15 18:03:19',1,'Una descripción más larga','Ya con contenido real','es'),(21,'otro','2016-09-15 21:45:44','2016-09-15 21:45:44',1,'otro des','otro cont','es'),(22,'el ultimo','2016-09-15 22:07:52','2016-09-15 22:07:52',1,'sada','asdas','es'),(23,'algo2','2016-09-15 22:30:45','2016-09-15 22:30:45',1,'descripcion','contenido','es'),(24,'algo2','2016-09-15 22:30:45','2016-09-15 22:30:45',1,'descripcion','contenido','es'),(25,'algo2','2016-09-15 22:33:18','2016-09-15 22:33:18',1,'descripcion','contenido','es'),(26,'Otro nuevo','2016-09-15 22:34:50','2016-09-15 22:34:50',1,'asdas','asdasdasd','es'),(27,'El titulo bueno','2016-09-15 22:36:08','2016-09-15 22:37:09',1,'Otra descripción','asdasda','es');
+INSERT INTO `theme` VALUES (29,'Español','2016-09-17 16:18:49','2016-09-17 16:18:49',1,'Curso de español','adalsdlaskdña','es'),(30,'Otro tema','2016-09-17 16:21:24','2016-09-17 16:21:24',1,'matematicas','adaskdasjlkd','es'),(31,'Otro tema','2016-09-17 20:34:20','2016-09-17 20:34:48',1,'adsad','asdasd','es');
 /*!40000 ALTER TABLE `theme` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +532,7 @@ CREATE TABLE `themeauthor` (
   `role` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_index` (`id_user`,`id_theme`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -541,7 +541,7 @@ CREATE TABLE `themeauthor` (
 
 LOCK TABLES `themeauthor` WRITE;
 /*!40000 ALTER TABLE `themeauthor` DISABLE KEYS */;
-INSERT INTO `themeauthor` VALUES (10,3,15,'creator'),(12,3,14,'creator'),(18,3,26,'creator'),(19,3,27,'creator');
+INSERT INTO `themeauthor` VALUES (21,3,29,'creator'),(22,3,30,'creator'),(24,3,31,'creator');
 /*!40000 ALTER TABLE `themeauthor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -755,4 +755,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-15 18:37:53
+-- Dump completed on 2016-09-18  8:25:03

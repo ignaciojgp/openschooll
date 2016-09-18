@@ -61,37 +61,13 @@
         }
         
         
-        public function get($idLesson, $lang = "ES"){
-            $query = 'SELECT '
-                    .self::TABLENAME.'.'.self::COL_ID.', '
-                    .self::TABLENAME.'.'.self::COL_TITLE.', '
-                    .self::TABLENAME.'.'.self::COL_ENABLED.', '
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_TITLE.','
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_DESCRIPTION.''
-                    
-                    .' FROM '.self::TABLENAME                    
-                    .' RIGHT JOIN '.self::LOCALE_CONTENT_TABLE.' ON '
-                    
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_ID_CONTAINER.' = '.self::TABLENAME.'.'.self::COL_ID
-                    .' and '
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_LANG.' = "'.$lang.'" '
-                    .' and '
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_ID_CONTENTKIND.' = 2 '
-                    .' and '
-                    .self::LOCALE_CONTENT_TABLE.'.'.self::LC_COL_ENABLED.' = 1 '
-                    
-                    .' WHERE '.self::TABLENAME.'.'.self::COL_ID.' = '.$idLesson
-                    .' AND '.self::TABLENAME.'.'.self::COL_ENABLED.' =  1 ';
+        public function get($idLesson){
             
-            //$query ='  SELECT * FROM '.self::TABLENAME.' WHERE '.self::TABLENAME.'.'.self::COL_ID_THEME.' = '.$idTheme .' AND '.self::TABLENAME.'.'.self::COL_ENABLED.' =  1 ';
-        
-        
-        
-           
+			$query = 'SELECT * from lesson where id = ?';
+            
             $sth = $this->prepare($query);
         
-            $sth->execute();
-            
+            $sth->execute([$idLesson]);
             
             $rows = $sth->fetch();
             
@@ -104,7 +80,7 @@
                 
                 $db2 = new ModelMedia($this->settings);
             
-                $media = $db2->getMediaEnabledByLang($idLesson, $lang);
+                $media = $db2->getMediaEnabledByLang($idLesson);
             
                 if($media['code']==200){
                     $rows['media']= $media['message'];

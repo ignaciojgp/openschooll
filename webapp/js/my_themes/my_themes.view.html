@@ -3,8 +3,9 @@
 	
 	<div>
 		<button class="btn btn-primary" ng-click="nuevo()" ng-show="view == 'list'"><span class="glyphicon glyphicon-plus"></span> Crear tema</button>
-		<button class="btn" ng-click="edithTheme=null" ng-show="view == 'form'"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</button>
+		<button class="btn" ng-click="editTheme=null; editLesson=null" ng-show="view == 'form' || view == 'formLesson'"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</button>
 	</div>
 	<mythemes-list ng-if="view == 'list'" themes="themeList"></mythemes-list>
-	<form-theme ng-if="view == 'form'" ediththeme = "edithTheme" ></form-theme>
+	<form-theme ng-if="view == 'form'" theme="editTheme" ></form-theme>
+	<form-lesson ng-if="view == 'formLesson'" lesson="editLesson" ></form-theme>
 </div>

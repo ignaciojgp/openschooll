@@ -27,14 +27,37 @@
            
 		
             $sth = $this->prepare($query);
-        
             $sth->execute(Array($idUser));
-            
-            
             $rows = $sth->fetchAll();
-            
-            
-            
+
+			//para obtener lessons
+			$ids = array_column($rows,'id');
+
+			$lessonQuery = "select id, title, description, enabled, value, id_theme from lesson where id_theme in (".implode("," , $ids ).") ";
+            $sth = $this->prepare($lessonQuery);
+			
+			
+			$sth->execute();
+			$lessons = $sth->fetchAll();
+			
+			foreach($rows as &$row){
+				
+				$row['lessons'] = [];
+				
+				foreach($lessons as &$lesson){
+					
+					if($lesson['id_theme'] == $row['id']){
+						
+						array_push($row['lessons'],$lesson); 
+					} 
+					
+				}
+				
+			}
+			
+			
+			
+			
             if($rows != null){
                 
                 return Array("code"=>200,"message"=>$rows);

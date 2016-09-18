@@ -1,80 +1,82 @@
 <!DOCTYPE html>
 <html ng-app="openschoolApp">
-<head>
+	<head>
 
- 	<meta charset="UTF-8">
-    <meta name="description" content="Free Web School">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Ignacio J González Pérez">
-    
-    <title>title</title>
-    
-        
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <link href="css/desktop.css" rel="stylesheet" media="screen"/>
-    
-    <!--  librerias  -->
-    <script type="text/javascript" src="js/libs/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="js/libs/bootstrap.js"></script>
-    <script type="text/javascript" src="js/libs/angular.min.js"></script>
-    <script type="text/javascript" src="js/libs/sanitize.js"></script>
-    <script type="text/javascript" src="js/libs/angular-editor.js"></script>
-	
-	
-	<!--  servicios  -->
-    <script type="text/javascript" src="js/openschoolapi.service.js"></script>
+		<meta charset="UTF-8"/>
+		<meta name="description" content="Free Web School"/>
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript"/>
+		<meta name="author" content="Ignacio J González Pérez"/>
 
-	<!--  modulos  -->
-	<script type="text/javascript" src="js/menu/module.menu.js"></script>
-    <script type="text/javascript" src="js/courses/course.controller.js"></script>
-    <script type="text/javascript" src="js/my_themes/my_themes.controller.js"></script>
-    <script type="text/javascript" src="js/courses/theme.controller.js"></script>
-    <script type="text/javascript" src="js/desktop/desktop.controller.js"></script>
-        
-        
-</head>
-<body ng-controller="PageController">
-    <nav class="navbar navbar-default container">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    OpenSchool
-                </a>
-            </div>
-          
-          
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li class="dropdown">
-                    <a class="dropdown-toggle" type="button" id="userOptionsMenu" data-toggle="dropdown" aria-expanded="true">
-                        Usuario: {{user.email}} <span class="glyphicon glyphicon-cog"></span>
-                        
-                    </a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="userOptionsMenu">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="close-session.php">Cerrar sesion</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-      
-        </div>
-    </nav>
-    <main-menu options="user.menu" selection="menuSelectedOption"></main-menu>
-    <div class="container">
-    	<div ng-show="seccion == null" class="text-center">Seleccione una pantalla</div>
-	
-	<ng-include src="seccion"></ng-include>
-	
-    </div>
-    
-    
-    
-    <div class="footer container">
-        
-        Openschool, es una iniciativa sin fines de lucro 
-        
-    </div>
-    
-</body>
+		<title>title</title>
+
+
+		<link href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="js/bower_components/angular-fancy-modal/dist/angular-fancy-modal.min.css" rel="stylesheet" media="screen"/>
+		<link href="js/bower_components/angular-fancy-modal/dist/angular-fancy-modal-theme-classic.min.css" rel="stylesheet" media="screen"/>
+		<link href="css/desktop.css" rel="stylesheet" media="screen"/>
+
+		<!--  librerias  -->
+		<script type="text/javascript" src="js/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-fancy-modal/dist/angular-fancy-modal.min.js"></script>
+
+
+		<!--  servicios  -->
+		<script type="text/javascript" src="js/openschoolapi.service.js"></script>
+
+		<!--  modulos  -->
+		<script type="text/javascript" src="js/menu/module.menu.js"></script>
+		<script type="text/javascript" src="js/courses/course.controller.js"></script>
+		<script type="text/javascript" src="js/my_themes/my_themes.controller.js"></script>
+		<script type="text/javascript" src="js/courses/theme.controller.js"></script>
+		<script type="text/javascript" src="js/desktop/desktop.controller.js"></script>
+
+
+	</head>
+	<body ng-controller="PageController">
+		<nav class="navbar navbar-default container">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						OpenSchool
+					</a>
+				</div>
+
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" type="button" id="userOptionsMenu" data-toggle="dropdown" aria-expanded="true">
+							Usuario: {{user.email}} <span class="glyphicon glyphicon-cog"></span>
+
+						</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="userOptionsMenu">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Perfil</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="close-session.php">Cerrar sesion</a></li>
+
+						</ul>
+					</li>
+				</ul>
+
+			</div>
+		</nav>
+		<main-menu options="user.menu" selection="menuSelectedOption"></main-menu>
+		<div class="container">
+			<div ng-show="seccion == null" class="text-center">Seleccione una pantalla</div>
+
+			<ng-include src="seccion"></ng-include>
+
+		</div>
+
+
+
+		<div class="footer container">
+
+			Openschool, es una iniciativa sin fines de lucro 
+
+		</div>
+
+	</body>
 </html>

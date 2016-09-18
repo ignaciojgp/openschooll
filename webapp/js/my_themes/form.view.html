@@ -1,18 +1,18 @@
 <form name="crear"  ng-disabled="sending">
 	<p class="row" >
-		<div class="col-md-4 text-right">
+		<div class="col-md-2 text-right">
 			<label class="control-label ">ID</label>
 		</div>
-		<div class="col-md-8 ">
+		<div class="col-md-10 ">
 			<input type="text" name="idInput" readonly ng-model="theme.id" class="form-control"/>
 		</div>
 		
 	</p>
 	<p class="row" >
-		<div class="col-md-4 text-right">
+		<div class="col-md-2 text-right">
 			<label class="control-label ">Título</label>
 		</div>
-		<div class="col-md-8 ">
+		<div class="col-md-10 ">
 			<input type="text" name="inputTitle" required ng-model="theme.name" class="form-control"/>
 			<div ng-show="crear.inputTitle.$dirty && crear.inputTitle.$error.required" class="alert alert-danger">Campo requerido</div>
 		</div>
@@ -20,33 +20,33 @@
 	</p>
 	
 	<p class="row">
-		<div class="col-md-4 text-right">
+		<div class="col-md-2 text-right">
 			<label class="control-label ">Lenguaje</label>
 		</div>
-		<div class="col-md-8 ">
+		<div class="col-md-10 ">
 			<select name="selectlang" required ng-model="theme.lang" ng-options="lang.val as lang.label for lang in languajes" class="form-control"></select>
 		</div>
 	</p>
 	<p class="row">
-		<div class="col-md-4 text-right">
+		<div class="col-md-2 text-right">
 			<label class="control-label">Descripción</label>
 		</div>
-		<div class="col-md-8 ">
+		<div class="col-md-10 ">
 			<textarea required ng-model="theme.description" name="descr" class="form-control"></textarea>
 			<div ng-show="crear.descr.$dirty && crear.descr.$error.required" class="alert alert-danger">Campo requerido</div>
 		</div>
 	</p>
 	<p class="row ">
-		<div class="col-md-4 text-right">
+		<div class="col-md-2 text-right">
 			<label class="control-label">Contenido</label>
 		</div>
 		
-		<div class="col-md-8 ">
-			<textarea ng-model="theme.content" class="form-control"></textarea>
+		<div class="col-md-10 ">
+			<textarea ng-model="theme.content" class="form-control	" ></textarea>
 		</div>
 	</p>
 	<p class="row ">
-		<div class="col-md-8 col-md-offset-4 text-right">
+		<div class="col-md-10 col-md-offset-2 text-right">
 			<button class="btn btn-primary" ng-disabled="!crear.$valid" ng-click="submit()">Guardar</button>
 		</div>
 	</p>
