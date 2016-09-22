@@ -3,7 +3,7 @@
 		<td>No hay datos disponibles</td>
 	</tr>
 	
-	<tr ng-repeat-start="theme in themes">
+	<tr ng-repeat-start="theme in themes" ng-class="{'info': theme.info}">
 		<th>
 			{{theme.name}}
 		</th>
@@ -11,21 +11,22 @@
 			<small>{{theme.createdAt}}</small>
 		</td>
 		<td class="text-right">
-			<button class="btn" ng-click="selectTheme(theme)">
+			<button class="btn btn-primary" ng-click="selectTheme(theme)">
 				<span class="glyphicon glyphicon-pencil "></span> Editar
 			</button>
-			<button class="btn" ng-click="theme.info = !theme.info">
-				<span class="glyphicon glyphicon-info-sign"></span>
+			<button class="btn btn-default" ng-click="moreInfo(theme)">
+				<span class="glyphicon glyphicon-chevron-up" ng-show="theme.info"></span>
+				<span class="glyphicon glyphicon-chevron-down" ng-show="!theme.info"></span>
 			</button>
 		</td>
 	</tr>
-	<tr ng-show="theme.info">
-		<th>Description:</th>
+	<tr ng-show="theme.info" ng-class="{'info': theme.info}">
+		<td>Description:</td>
 		<td colspan="2">
 			{{theme.description}}
 		</td>
 	</tr>
-	<tr ng-show="theme.info">
+	<tr ng-show="theme.info " ng-class="{'info': theme.info}">
 		<td colspan="3">
 			<table class="table"> 
 				<tr ng-repeat="lesson in theme.lessons">
@@ -39,7 +40,7 @@
 					</td>
 					<td width="10%">valor:{{lesson.value}}</td>
 					<td width="1%">
-						<button class="btn" ng-click="selectLesson(lesson)">
+						<button class="btn btn-primary " ng-click="selectLesson(lesson)">
 							<span class="glyphicon glyphicon-pencil"></span>
 						</button>
 					</td>

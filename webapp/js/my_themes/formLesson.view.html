@@ -10,7 +10,22 @@
 			<label class="control-label ">ID TEMA</label>
 		</div>
 		<div class="col-md-4 ">
-			<input type="text" name="idInput" readonly ng-model="lesson.id_theme" class="form-control"/>
+			<input type="text" name="idThemeInput" readonly ng-model="lesson.id_theme" class="form-control"/>
+		</div>
+	</p>
+	
+	<p class="row" >
+		<div class="col-md-2 text-right">
+			<label class="control-label ">Visible</label>
+		</div>
+		<div class="col-md-4 ">
+			<select   ng-model="lesson.enabled" class="form-control" ng-options="option.value as option.label  for option in visibleOptions"></select>
+		</div>
+		<div class="col-md-2 text-right">
+			<label class="control-label ">Valor  </label>
+		</div>
+		<div class="col-md-4 ">
+			<input type="text" name="valueInput"  ng-model="lesson.value" class="form-control"/>
 		</div>
 	</p>
 	

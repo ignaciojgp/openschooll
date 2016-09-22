@@ -75,7 +75,6 @@
 			$http.get('/openschool/api/themes/es', null).
 				success(function(data, status, headers, config) {
 					
-					debugger
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
@@ -201,7 +200,74 @@
 			return deferred.promise;
 		}
 			
+		this.saveLesson = function(id,idTheme,title,description,content,enabled,value){
+			var deferred = $q.defer();
+			var data = {
+				id:id,
+				idTheme:idTheme ,
+				title:title ,
+				description:description ,
+				content:content,
+				enabled:enabled,
+				value:value 
+			};
+			
+			$http({
+			    method: 'POST',
+			    url: '/openschool/api/lesson/',
+			    data: $.param(data),
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).
+				success(function(data, status, headers, config) {
+					
+					if (data.code==200) {
+						deferred.resolve(data.message);
+	 
+					}else{
+						deferred.reject(data.message);
+						
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+			
+		}
 		
+		this.subscribe = function(idTheme){
+			var deferred = $q.defer();
+			
+			$http({
+			    method: 'POST',
+			    url: '/openschool/api/subscribe/new/'+idTheme,
+			    data: null,
+			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			}).
+				success(function(data, status, headers, config) {
+					
+					if (data.code==200) {
+						deferred.resolve(data.message);
+	 
+					}else{
+						deferred.reject(data.message);
+						
+					}
+				}).
+				error(function(data, status, headers, config) {
+						
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+					
+				});
+			
+			
+			return deferred.promise;
+			
+		}
 		
 	}) 
 })();

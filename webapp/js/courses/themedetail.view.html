@@ -1,6 +1,15 @@
 <div >
-	<h2>{{theme.name}}</h2>
-
+	<h2>{{theme.name}}  
+		<button class="btn btn-xs" 
+			ng-click="subscribe()" 
+			ng-show="detail.subscription != -1" 
+			ng-disabled="detail.subscription == 1">
+			<span class="glyphicon glyphicon-flag"></span> 
+			<span ng-show="detail.subscription == 0">Suscribirse</span>
+			<span ng-show="detail.subscription == 1">Ya está suscrito</span>
+		</button>
+	</h2>
+	
 
 	<div  ng-show="!detail">cargando...</div>
 

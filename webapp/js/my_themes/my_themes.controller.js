@@ -71,6 +71,21 @@
 						function (ret) {})
 				}
 
+				$scope.moreInfo = function(theme){
+					
+					angular.forEach($scope.themes, function(value, key) {
+						
+						if(value == theme ){
+							value.info =  !value.info;
+						}else{
+							value.info = false;
+						}
+						
+					 
+					},null);
+					
+				}
+				
 			},
 			templateUrl : "js/my_themes/list.view.html",
 		};
@@ -145,11 +160,23 @@
 				lesson : "="
 			},
 			controller : function ($scope, $element, $attrs, osapi, $fancyModal) {
+				$scope.visibleOptions =[ 
+					{
+						value:1,
+						label:"si"
+					},
+					{
+						value:0,
+						label:"no"
+					}
+				];
 				
 				$scope.submit = function () {
 
 					$scope.ModalMessage = "guardando espere un momento";
 
+					
+					
 					var modal = $fancyModal.open({
 							template : '<p>{{ModalMessage}}</p>',
 							closeOnEscape : false,
@@ -164,7 +191,10 @@
 						$scope.lesson.id_theme,
 						$scope.lesson.title,
 						$scope.lesson.description,
-						$scope.lesson.content
+						$scope.lesson.content,
+						$scope.lesson.enabled,
+						$scope.lesson.value
+						
 						).then(
 							function (res) {
 								if (res.insertedId != undefined && $scope.id == undefined) {

@@ -7,13 +7,13 @@
 
 			link: function($scope,$element,$attr){
 				
+				
 				$scope.$watch("theme",function(){
 					
 					if($scope.theme != null){
 						osapi.getTheme($scope.theme.id).then(
 							function(ret){
 								$scope.detail = ret;
-								
 							},
 							function(ret){
 								debugger;
@@ -24,7 +24,21 @@
 						
 					}
 					
-				},true)
+				},true);
+				
+				
+				$scope.subscribe = function(){
+					
+					osapi.subscribe($scope.theme.id).then(
+						function(res){
+							$scope.detail.subscription = 1;
+						},
+						function(res){
+							debugger;
+						}
+					)
+					
+				}
 				
 			},
 			scope:{
