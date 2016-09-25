@@ -1,19 +1,23 @@
 (function(){
 	
-	var mod = angular.module('themeModule',['osapi']);
+	var mod = angular.module('themeModule',['osapi','lessonModule']);
 	
-	mod.directive("themeDetail", function(osapi){
+	mod.directive("themeDetail",  ['$location','osapi',function($location, osapi){
 		return {
-
 			link: function($scope,$element,$attr){
 				
 				
 				$scope.$watch("theme",function(){
+					$scope.selectedLesson = null;
+					$scope.detail = null;
 					
 					if($scope.theme != null){
 						osapi.getTheme($scope.theme.id).then(
 							function(ret){
 								$scope.detail = ret;
+								
+								$scope.$on('$locationChangeSuccess', locationChange);
+								locationChange(null);
 							},
 							function(ret){
 								debugger;
@@ -40,6 +44,33 @@
 					
 				}
 				
+				$scope.selectLesson = function(lesson){
+					
+					$location.path("/courses/"+$scope.theme.name+"/"+lesson.id);
+				}
+				
+				
+				/*
+				reconoce cuando cambia la ubicacion 
+				*/
+				function locationChange(event){
+					
+					var path = $location.url();
+					var sections = path.split("/");
+					var lessonID = sections[3];
+					if(lessonID && $scope.detail && $scope.detail.lessons ){
+						var idLesson = decodeURIComponent(lessonID);
+						var lessonCoincidente = $scope.detail.lessons.filter(function(item){return item.id == idLesson})[0]
+						
+						if(lessonCoincidente){
+							$scope.selectedLesson  = lessonCoincidente;
+						}
+					}
+				}
+				
+				
+				
+				
 			},
 			scope:{
 				theme:"="
@@ -49,7 +80,7 @@
 			
 			
 		};
-	});
+	}]);
 	
 	
 	mod.directive("themeList",function($location){

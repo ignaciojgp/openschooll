@@ -15,17 +15,18 @@
 
 	<div ng-show="detail">
 		<div>{{detail.description}}</div>
-		<ol>
-			<li ng-repeat="lesson in detail.lessons">
-				<h3>{{lesson.title}}</h3>
-				<div>{{lesson.description}}</div>
-			</li>
-		</ol>
+		
+		<div class="list-group col-md-3 "  >
+			<a  class="list-group-item " ng-repeat="lesson in detail.lessons" ng-click="selectLesson(lesson)" ng-class="{'active':selectedLesson == lesson}" >
+				<h4 class="list-group-item-heading" >{{lesson.title}}</h4>
+				<div class="list-group-item-text">{{lesson.description}}</div>
+			</a>
+		</div>
 		
 		
-		
-		
-		
+		<div class="col-md-9">
+			<lesson-detail ng-show="selectedLesson"  lesson="selectedLesson"></lesson-detail>
+		</div>
 		
 	</div>
 	
