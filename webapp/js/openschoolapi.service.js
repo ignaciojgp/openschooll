@@ -1,29 +1,29 @@
 (function(){
-	
-	
+
+
 	var mod = angular.module("osapi",[]);
 	mod.config(function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
 		$httpProvider.defaults.headers.common['Authorization'] = "Basic bmFjaG86MWM4YzVlZjczZWM2YTdhOTA2OTYwNGI5NjQ4ZjMzY2Y";
     });
 	mod.service('osapi',function($http,$q){
-		
-		
-		
-		
+
+
+
+
 		/*
 			login  -------
 		*/
 		this.login = function(email,pass){
-			
+
 			var deferred = $q.defer();
 
 			var options = {params:{}};
-				
+
 			options.params.email = email;
 			options.params.pass =  pass;
-			
-                
+
+
 			$http.post('/openschool/api/user/LOGIN/', options).
 				success(function(data, status, headers, config) {
 				    if (data.code==200) {
@@ -33,16 +33,16 @@
 				    }
 				}).
 				error(function(data, status, headers, config) {
-                    
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-                    
+
 				}
 			);
-			
-			
+
+
 			return deferred.promise;
 		}
-		
+
 		/*
 			MYUSER
 		*/
@@ -54,19 +54,19 @@
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
-	 
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
 		}
-		
+
 		/*
 			themas
 		*/
@@ -74,24 +74,24 @@
 			var deferred = $q.defer();
 			$http.get('/openschool/api/themes/es', null).
 				success(function(data, status, headers, config) {
-					
+
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
-	 
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
-			
+
 		}
-		
+
 		/*
 			detalleDeTheme
 		*/
@@ -102,33 +102,33 @@
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
-	 
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
 		}
-		
+
 		/*
 			save theme
 		*/
 		this.saveTheme = function(id,name,description, content, lang){
 			var deferred = $q.defer();
-			
+
 			var data = {
 				id:id,
 				name:name,
-				description:description, 
-				content:content, 
+				description:description,
+				content:content,
 				lang:lang
 			}
-			
+
 			$http({
 			    method: 'POST',
 			    url: '/openschool/api/theme/',
@@ -136,28 +136,28 @@
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).
 				success(function(data, status, headers, config) {
-					
+
 					if (data.code==200) {
 						deferred.resolve(data.message);
-	 
+
 					}else{
 						deferred.reject(data.message);
-						
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
-			
+
 		}
-		
+
 		this.getThemesByCreator = function(idUser){
-			
+
 			var deferred = $q.defer();
 			$http.get('/openschool/api/themesBy/creator/'+idUser, null).
 				success(function(data, status, headers, config) {
@@ -168,15 +168,15 @@
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
 		}
-		
+
 		/*
 			detalleDeTheme
 		*/
@@ -187,19 +187,19 @@
 					if (data.code==200) {
 					   // $scope.user= ;
 					   deferred.resolve(data.message);
-	 
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
 		}
-			
+
 		this.saveLesson = function(id,idTheme,title,description,content,enabled,value){
 			var deferred = $q.defer();
 			var data = {
@@ -209,9 +209,9 @@
 				description:description ,
 				content:content,
 				enabled:enabled,
-				value:value 
+				value:value
 			};
-			
+
 			$http({
 			    method: 'POST',
 			    url: '/openschool/api/lesson/',
@@ -219,29 +219,29 @@
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).
 				success(function(data, status, headers, config) {
-					
+
 					if (data.code==200) {
 						deferred.resolve(data.message);
-	 
+
 					}else{
 						deferred.reject(data.message);
-						
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
-			
+
 		}
-		
+
 		this.subscribe = function(idTheme){
 			var deferred = $q.defer();
-			
+
 			$http({
 			    method: 'POST',
 			    url: '/openschool/api/subscribe/new/'+idTheme,
@@ -249,25 +249,45 @@
 			    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).
 				success(function(data, status, headers, config) {
-					
+
 					if (data.code==200) {
 						deferred.resolve(data.message);
-	 
+
 					}else{
 						deferred.reject(data.message);
-						
+
 					}
 				}).
 				error(function(data, status, headers, config) {
-						
+
 					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
-					
+
 				});
-			
-			
+
+
 			return deferred.promise;
-			
+
 		}
-		
-	}) 
+
+		this.getMyStudents = function(){
+			var deferred = $q.defer();
+			$http.get('/openschool/api/myStudents', null).
+				success(function(data, status, headers, config) {
+					if (data.code==200) {
+					   // $scope.user= ;
+					   deferred.resolve(data.message);
+
+					}
+				}).
+				error(function(data, status, headers, config) {
+
+					deferred.reject("No pudimos procesar tu solicitud, inténtalo más tarde");
+
+				});
+
+
+			return deferred.promise;
+		}
+
+	})
 })();

@@ -1,0 +1,12 @@
+<div ng-controller="my_studentsController">
+    <h2>Mis estudiantes</h2>
+    <ul>
+        <li ng-repeat="student in list">
+            <div>
+                <img src="/openschool/api/st" alt="" />
+                <h3>{{student.name}} (<small>{{student.Age }} años</small>)</h3>
+                <div></div>
+            </div>
+        </li>
+    </ul>
+</div>

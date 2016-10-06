@@ -16,7 +16,7 @@
         $model = new ModelThemeSubscription();
         
         echo "probando getFirst() \n";
-        print_r($model->find(3,29));
+        print_r($model->getStudents(3));
         
         
         echo "fin de la prueba \n";

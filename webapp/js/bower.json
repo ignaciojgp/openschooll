@@ -15,10 +15,6 @@
 		"tests"
 	],
 	"dependencies" : {
-		"angular" : "",
-		"angular-messages" : "",
-		"angular-sanitize":"",
-		"bootstrap" : "3",
-		"ng-ckeditor" : ""
+		
 	}
 }
