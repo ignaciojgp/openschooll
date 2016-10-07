@@ -19,7 +19,8 @@
     "jquery":"",
     "bootstrap":"",
     "angular-messages":"",
-    "angular-sanitize":""
+    "angular-sanitize":"",
+    "angular-fancy-modal":""
   },
   "private": true
 }

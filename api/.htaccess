@@ -2,6 +2,6 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule (.*)$ http://localhost/openschool/api/api.php?request=$1 [QSA,NC,L]
-#RewriteRule (.*)$ http://www.google.com [R]
+RewriteRule (.*)$ api.php?request=$1 [QSA,NC,L]
+
 </IfModule>
