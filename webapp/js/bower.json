@@ -1,20 +1,25 @@
 {
-	"name" : "js",
-	"homepage" : "https://github.com/ignaciojgp/openschooll",
-	"authors" : [
-		"IgnacioJGP <ignaciojpg@gmail.com>"
-	],
-	"description" : "",
-	"main" : "",
-	"license" : "MIT",
-	"ignore" : [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	],
-	"dependencies" : {
-		
-	}
+  "name": "js",
+  "homepage": "https://github.com/ignaciojgp/openschooll",
+  "authors": [
+    "IgnacioJGP <ignaciojpg@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs":"",
+    "jquery":"",
+    "bootstrap":"",
+    "angular-messages":"",
+    "angular-sanitize":""
+  },
+  "private": true
 }
