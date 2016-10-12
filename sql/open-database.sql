@@ -176,7 +176,7 @@ CREATE TABLE `lesson` (
 
 LOCK TABLES `lesson` WRITE;
 /*!40000 ALTER TABLE `lesson` DISABLE KEYS */;
-INSERT INTO `lesson` VALUES (1,29,'acentos','2016-09-05 02:42:09',NULL,'cómo poner un acento',1,3,'algo de contenido',1),(2,29,'el punto','2016-09-05 02:46:01',NULL,'usos del punto',1,3,'algo de contenidos',2),(3,30,'algo','2016-09-17 16:22:58',NULL,'asdasdasdasdasdasdasd',1,3,'contenido',NULL),(4,30,'leccion 2','2016-09-17 16:24:05',NULL,'descripcion leccion 2',1,3,'hhjkhjkjk',NULL),(5,30,'algo','2016-09-17 21:46:56',NULL,'asdasdasdasdasd',1,3,'contenido',NULL),(6,31,'prueba','2016-09-18 14:06:23',NULL,'description',0,5,'content',NULL),(7,31,'Tercer tema','2016-09-18 14:06:28',NULL,'description',1,7,'content',NULL),(8,31,'Segundo tema','2016-09-18 14:16:09',NULL,'description',1,7,'content',NULL),(9,31,'Algo nuevo','2016-09-18 14:16:12',NULL,'otra description',0,5,'otro content',NULL),(10,29,'Nueva lección','2016-09-19 03:50:43',NULL,'asdas',0,5,'asdmasmdñas',NULL);
+INSERT INTO `lesson` VALUES (1,29,'acentos','2016-09-05 02:42:09',NULL,'cómo poner un acento',1,3,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec volutpat neque. Maecenas laoreet enim sit amet magna vehicula, varius sagittis nulla sodales. Maecenas elementum in nisi ac lacinia. Aliquam feugiat ligula euismod ex suscipit, et congue velit pellentesque. Ut placerat sapien quis tortor accumsan, eu fermentum diam dignissim. Fusce laoreet leo in lacinia pretium. Nullam vitae dolor ut velit fermentum ultricies quis ac nisi. In molestie efficitur nisl, vitae convallis lectus luctus ac. Phasellus efficitur, elit nec vestibulum dapibus, est enim mollis felis, eget mattis tortor diam sed magna. Nullam quis sapien porttitor, luctus nisi non, pharetra turpis. Curabitur nec convallis lorem, aliquet congue risus. Suspendisse quis tincidunt ipsum, id accumsan sem.\n\nIn quis tincidunt dolor. Nam viverra, lacus nec dictum viverra, odio enim egestas urna, in ultrices ipsum justo eu nulla. Maecenas turpis ligula, mattis eget neque a, consequat ultrices orci. Fusce sed convallis tortor. Pellentesque in felis nec mauris scelerisque sollicitudin. Vestibulum sit amet leo quis elit rutrum fermentum. Sed ullamcorper lacus massa, eget imperdiet dui efficitur ut. Praesent scelerisque ut purus non placerat. Nam viverra, arcu eget mollis auctor, ex nisi finibus dolor, eu rhoncus leo est at nulla. Fusce et luctus sem, in vestibulum neque. Aenean ut egestas est. Aliquam lectus turpis, ullamcorper eget nisl in, varius volutpat enim. Duis tortor velit, pharetra vitae ullamcorper sit amet, commodo nec purus. Donec vehicula nisi in rhoncus molestie.\n\nDonec tempus lacus nec urna condimentum pellentesque. Etiam quis sapien id libero luctus fermentum. Fusce at magna nisl. Fusce ultrices, risus a rhoncus lacinia, sapien risus ullamcorper tellus, id varius magna nulla quis quam. Curabitur tristique tempor ante in posuere. Aliquam mollis gravida nibh. Donec felis elit, hendrerit at consequat id, hendrerit id lacus. Aliquam erat volutpat. Cras non metus mauris. Cras iaculis fermentum pulvinar. Praesent ultrices, felis ut interdum ullamcorper, nibh lectus efficitur sem, non accumsan ex ante vel sapien. Nullam sollicitudin libero dignissim metus tristique, nec suscipit orci pharetra. Donec nec eros consequat, placerat felis eget, sollicitudin mi. Donec suscipit feugiat sapien, eu tempor felis faucibus et. Suspendisse luctus luctus est, ut egestas ipsum fermentum gravida. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\nNunc fermentum eget ex sollicitudin pulvinar. Donec nec dolor ultricies, dictum magna a, finibus lacus. Cras faucibus laoreet ipsum, vitae blandit arcu condimentum et. Vivamus cursus nisl non quam semper elementum. Vestibulum nec ullamcorper mi. Duis iaculis hendrerit velit et tempus. Phasellus elementum accumsan nunc sed bibendum. Fusce sit amet orci eu augue ornare tincidunt in consequat nibh. Mauris tempus congue consequat. Pellentesque lectus nisi, venenatis eu pharetra vel, maximus at quam. Etiam neque nunc, vehicula sit amet consectetur eget, auctor non nisl. Aenean eget dictum augue. Nam eu malesuada turpis, in sodales nibh. Praesent semper non metus in volutpat. Donec molestie lacus sit amet nisl congue, non vestibulum lectus condimentum. Duis odio massa, placerat vitae mattis non, maximus nec nibh.\n\nMorbi metus felis, ultricies et fringilla at, molestie eu mauris. Maecenas egestas odio vel luctus efficitur. Curabitur et nulla tempus, facilisis ante in, lobortis ante. Mauris nec laoreet risus. Vivamus ac nulla pretium, sagittis risus id, egestas lorem. Morbi scelerisque nisl nec semper pellentesque. Etiam nisi augue, vulputate et tortor at, condimentum volutpat ipsum. Ut in euismod neque. Praesent sit amet mi nec enim ornare finibus. Pellentesque eget elit orci. Mauris efficitur, massa vel rhoncus ullamcorper, ipsum diam ornare mauris, eget porttitor nulla tellus in lacus. Curabitur quis vulputate turpis. Nullam vitae nunc nec sapien consectetur pretium vel nec elit. Curabitur ac malesuada nisi. Fusce vehicula, ex et tincidunt ullamcorper, nulla arcu venenatis eros, ac rutrum tortor mi ut nisi.',1),(2,29,'el punto','2016-09-05 02:46:01',NULL,'usos del punto',1,3,'algo de contenidos',2),(3,30,'algo','2016-09-17 16:22:58',NULL,'asdasdasdasdasdasdasd',1,3,'contenido',NULL),(4,30,'leccion 2','2016-09-17 16:24:05',NULL,'descripcion leccion 2',1,3,'hhjkhjkjk',NULL),(5,30,'algo','2016-09-17 21:46:56',NULL,'asdasdasdasdasd',1,3,'contenido',NULL),(6,31,'prueba','2016-09-18 14:06:23',NULL,'description',0,5,'content',NULL),(7,31,'Tercer tema','2016-09-18 14:06:28',NULL,'description',1,7,'content',NULL),(8,31,'Segundo tema','2016-09-18 14:16:09',NULL,'description',1,7,'content',NULL),(9,31,'Algo nuevo','2016-09-18 14:16:12',NULL,'otra description',0,5,'otro content',NULL),(10,29,'Nueva lección','2016-09-19 03:50:43',NULL,'asdas',0,5,'asdmasmdñas',NULL);
 /*!40000 ALTER TABLE `lesson` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -617,7 +617,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (3,'\'ignaciojpg@gmail.com\'','1c8c5ef73ec6a7a9069604b9648f33cf',0,0,'\'\'',0,'2016-08-28 19:15:49','\'e'),(5,'\'contacto@visualeaks.com\'','154917d675e2b82510c8d3ffab6330e0',0,0,'\'\'',0,'2016-09-02 04:02:38','\'e');
+INSERT INTO `user` VALUES (3,'\'ignaciojpg@gmail.com\'','1c8c5ef73ec6a7a9069604b9648f33cf',0,0,'\'\'',0,'2016-08-28 19:15:49','\'e'),(5,'\'contacto@visualeaks.com\'','1c8c5ef73ec6a7a9069604b9648f33cf',0,0,'\'\'',0,'2016-09-02 04:02:38','\'e');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,7 +636,8 @@ CREATE TABLE `userinfo` (
   `Country` varchar(128) DEFAULT NULL,
   `genre` varchar(16) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `visibility` tinyint(4) unsigned NOT NULL DEFAULT '0'
+  `visibility` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `name` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -646,6 +647,7 @@ CREATE TABLE `userinfo` (
 
 LOCK TABLES `userinfo` WRITE;
 /*!40000 ALTER TABLE `userinfo` DISABLE KEYS */;
+INSERT INTO `userinfo` VALUES (3,33,NULL,NULL,NULL,'male','2016-10-04 03:31:35',1,'nacho'),(5,33,NULL,NULL,NULL,'male','2016-10-04 03:32:58',1,'contacto');
 /*!40000 ALTER TABLE `userinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -744,7 +746,7 @@ CREATE TABLE `userthemesubscription` (
 
 LOCK TABLES `userthemesubscription` WRITE;
 /*!40000 ALTER TABLE `userthemesubscription` DISABLE KEYS */;
-INSERT INTO `userthemesubscription` VALUES (3,29,'2016-09-22 04:52:09',1),(3,31,'2016-09-22 04:52:16',1);
+INSERT INTO `userthemesubscription` VALUES (3,29,'2016-09-22 04:52:09',1),(3,30,'2016-09-24 17:05:17',1),(3,31,'2016-09-22 04:52:16',1),(5,30,'2016-09-28 03:50:09',1),(5,31,'2016-09-28 03:50:13',1);
 /*!40000 ALTER TABLE `userthemesubscription` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -757,4 +759,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-21 23:53:24
+-- Dump completed on 2016-10-11 23:08:25
