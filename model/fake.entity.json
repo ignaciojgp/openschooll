@@ -1,0 +1,11 @@
+{
+  "name":"fake",
+  "attributes":{
+    "pesos":{"type":"float", "size":32, "signed":true},
+    "name":{"type":"string", "size":128, "required":true },
+    "otro":{"type":"string", "size":128, "required":true },
+    "description":{"type":"string", "size":128, "default":"'hola'", "signed":true},
+    "parent":{"type":"object","class":"fake"},
+    "comments":{"type":"list","class":"fake2"}
+  }
+}

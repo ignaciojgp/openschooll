@@ -1,0 +1,8 @@
+{
+  "name":"theme",
+  "attributes":{
+    "id":{"type":"int", "size":32},
+    "name":{"type":"string", "size":128},
+    "description":{"type":"text"}
+  }
+}

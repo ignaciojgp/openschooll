@@ -1,0 +1,9 @@
+<phpunit bootstrap="tests/autoload.php">
+  <testsuites>
+    <testsuite >
+      <!-- <directory>tests</directory> -->
+      <file phpVersion="5.3.0" phpVersionOperator=">=">tests/InstallerTest.php</file>
+
+    </testsuite>
+  </testsuites>
+</phpunit>
