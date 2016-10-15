@@ -2,16 +2,19 @@ module.exports = function(grunt){
 
     grunt.initConfig({
         pkg:grunt.file.readJSON('package.json'),
-        reload: {
-            port: 80,
-            proxy: {
-                host: 'localhost',
-            }
-        },
         watch:{
-            files:['*.php','index.html', 'style.less'],
-            tasks:'default reload'
+            options:{
+              livereload:true
+            },
+            phps:{
+              files:['**/*.php'],
+            },
+            css:{
+              files:["webapp/css/*.css"]
+
+            }
         }
+
     });
 
     grunt.loadNpmTasks('grunt-reload');

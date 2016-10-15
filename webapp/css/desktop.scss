@@ -2,12 +2,13 @@
 
 .Themes{
     .description{
-        min-height: 100px;  
+        min-height: 100px;
     }
 }
-
+// TODO: asdas
 .themeList{
-    
+  //comentario
+
     padding: 0;
 
     li{
@@ -15,18 +16,17 @@
         padding: 1em;
         border-top: #ccc solid 1px;
         cursor: pointer;
-        
+
         &:hover, &.active{
             background: #efefef;
         }
-         
+
         h3{
             margin-top: 0;
         }
     }
-    
-    
 }
+
 .ng-valid.ng-dirty{
 	border-color:green;
 }
